@@ -1,0 +1,32 @@
+{
+  "name": "Stockify",
+  "version": "1.0.0",
+  "description": "Project 3 - In-Stock uses web scraping technology to look for product that has certain \"out of stock\" keywords, and allows a user to enter their information to receive an email alert when an item is available again.",
+  "main": "server.js",
+  "scripts": {
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server.js",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && npm run start",
+    "seed": "node scripts/seedDB.js",
+    "install": "cd client && npm install",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TEXWRECKS/Stockify.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TEXWRECKS/Stockify/issues"
+  },
+  "homepage": "https://github.com/TEXWRECKS/Stockify#readme",
+  "dependencies": {
+    "concurrently": "^5.3.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.11.6"
+  }
+}
