@@ -51,7 +51,10 @@
 }
 
 .product-search {
-  margin-top: 20px;
+  /* margin-top: 20px; */
+  width: 1000px;
+  margin-right: 10px;
+  padding-left: 10px;
 }
 
 .search-title {
@@ -59,10 +62,25 @@
   font-weight: bolder;
   font-size: 30px;
   margin-bottom: 2px;
+  text-align: left;
 }
 
 .search-text {
   font-size: 15px;
   font-weight: 20px;
   margin-top: -2px;
+  text-align: left;
+}
+
+.search-col {
+  margin-top: 70px;
+  margin-left: 10px;
+}
+
+/* Navbar */
+
+.navbar-brand {
+  font-weight: bolder;
+  font-style: italic;
+  color: #f19276;
 }
