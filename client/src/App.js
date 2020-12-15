@@ -3,6 +3,7 @@ import './App.css';
 import Index from './pages/index';
 import Products from './pages/products';
 import Navbar from './components/navbar';
+import ProductCard from './components/product';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <div>
         <Route exact path="/" component={Index} />
         <Route exact path="/products" component={Products} />
+        <ProductCard />
       </div>
     </Router>
   );
