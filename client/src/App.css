@@ -36,3 +36,33 @@
     transform: rotate(360deg);
   }
 }
+
+/* Index page - product search */
+.jumbotron {
+  background-color: #d8eef7;
+  margin: 40px;
+  max-height: 300px;
+  padding: 10px;
+}
+
+.input-col {
+  margin-top: 60px;
+  margin-left: 30px;
+}
+
+.product-search {
+  margin-top: 20px;
+}
+
+.search-title {
+  color: black;
+  font-weight: bolder;
+  font-size: 30px;
+  margin-bottom: 2px;
+}
+
+.search-text {
+  font-size: 15px;
+  font-weight: 20px;
+  margin-top: -2px;
+}
