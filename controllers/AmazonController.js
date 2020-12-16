@@ -39,7 +39,7 @@ async function saveItem(user, item){
 }
 
 
-
+export {getItem, saveItem}
 
 // Lego Bugatti - https://www.amazon.com/gp/product/B07C8L9CRJ/ref=ox_sc_saved_title_4?smid=A2TF0EOVMPEXJK&psc=1
 // Lego Stranger Things - https://www.amazon.com/gp/product/B07Q2WMBLR/ref=ox_sc_saved_title_7?smid=ATVPDKIKX0DER&psc=1
