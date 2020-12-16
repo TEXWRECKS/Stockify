@@ -5,15 +5,16 @@ const Schema = mongoose.Schema;
 const itemSchema = new Schema({
     itemTitle: String,  // Name of item
     itemUrl: String,  // URL to item
+    itemImage: String, // URL of image
     itemPrice: Number,  // latest item price
     itemStatus: String,  // current status: in-stock or out-of-stock
-    itemAlert: String,  // alert type: price or in-stock
+    itemPriceAlert: Number,  // price to alert at
 })
 
 const userSchema = new Schema({
     email: String,  // User email
     firstName: String,  // User first name
-    lastName: Number,  // User last name
+    lastName: String,  // User last name
     userItems: [itemSchema],  // FK reference to items 
 })
 
