@@ -9,7 +9,7 @@ function Index() {
       <div class="jumbotron jumbotron-fluid mt-10">
         <div class="container">
           <Row>
-            <Col md-6 className="search-col">
+            <Col md-8 className="search-col">
               <h1 className="search-title">Search for your Product</h1>
               <p className="search-text">
                 and we will notify you when it's back in stock.
@@ -23,12 +23,13 @@ function Index() {
                 <Button variant="outline-primary">Search</Button>
               </Form>
             </Col>
-            <Col md>
+            <Col md-4>
               <img className="banner-photo" src={Banner} alt="" />
             </Col>
           </Row>
         </div>
       </div>
+      <div class="container"></div>
     </div>
   );
 }

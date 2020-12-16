@@ -14,10 +14,10 @@ function product(props) {
     //   }}
     >
       <Container className="product-container md">
-        <Card style={{ width: '40rem' }} className="product-card">
+        <Card className="product-card">
           <Card.Body>
-            <Card.Title>Product Found</Card.Title>
-            <Card.Subtitle className="mb-2 text-muted">
+            <Card.Title className="product-found">Product Found</Card.Title>
+            <Card.Subtitle className="mb-2 text-muted product-subtext">
               Is this the product you were looking for?
             </Card.Subtitle>
             <Container className="product-output">
@@ -28,8 +28,9 @@ function product(props) {
                 <Col classname="product-details" md>
                   {/* this needs to be props and also have a limit on character length */}
                   <Card.Title className="product-name">
-                    LEGO Technic Bugatti Chiron <br></br>42083 Race Car Building
-                    Kit
+                    LEGO Technic Bugatti Chiron 42083 Race Car Building Kit and
+                    Engineering Toy, Adult Collectible Sports Car with Scale
+                    Model Engine (3599 Pieces)
                   </Card.Title>
                   <Card.Subtitle className="mb-2 text-muted product-price">
                     Price: <strong>$349.95</strong>
