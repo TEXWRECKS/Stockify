@@ -1,24 +1,24 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
+import Index from './pages/index';
+import Products from './pages/products';
+import Navbar from './components/navbar';
+import ProductCard from './components/product';
+import SavedProducts from './components/savedProducts';
 
 function App() {
+  const [theme, setTheme] = useState('light');
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Navbar />
+      <div>
+        <Route exact path="/" component={Index} />
+        <Route exact path="/products" component={Products} />
+        <ProductCard />
+        <SavedProducts />
+      </div>
+    </Router>
   );
 }
 
