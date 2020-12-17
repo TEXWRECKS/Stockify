@@ -1,9 +1,9 @@
 const router = require("express").Router();
 const path = require("path");
-const testRoutes = require("./api/testRoutes");
+const stockifyRoutes = require("./api/stockifyRoutes");
 
 // Adds "/api" to any calls made 
-router.use("/api", testRoutes)
+router.use("/api", stockifyRoutes)
 
 // HTML route
 router.use((req, res) => {
