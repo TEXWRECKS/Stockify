@@ -1,5 +1,8 @@
+const {getItem, saveItem} = require('../../controllers/AmazonController.js')
+
 const router = require("express").Router();
 const db = require("../../models");
+
 
 // Routes will go here (.get, .post, etc...)
 router.post("/ids", (req, res) => {
@@ -12,14 +15,12 @@ router.post("/ids", (req, res) => {
         });
     });
 
-router.get("/ids", (req, res) => {
-    db.Test.find({})
-    .then((dbId) => {
-        res.json(dbId);
-    })
-    .catch((err) => {
-        res.status(400).json(err);
-    });
+router.get("/getItem", async (req, res) => {
+    // reads the url field from the body of the message sent by the front end
+    url = req.body.url
+    item = await getItem(url)
+    console.log(item);
+    res.json(item);
 });
 
 module.exports = router;
