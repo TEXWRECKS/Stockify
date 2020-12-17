@@ -1,3 +1,4 @@
+// Only use this file if using Amazon API instead of web scrapping method.
 import React, {useState} from "react";
 import axios from "axios";
 
