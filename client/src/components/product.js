@@ -39,10 +39,10 @@ function product(props) {
                     <strong style={{ color: 'red' }}>Out of Stock</strong>
                   </Card.Text>
                   <Button variant="outline-primary" className="product-btn">
-                    Search
+                    No
                   </Button>
                   <Button variant="success" className="product-btn">
-                    Save
+                    Yes
                   </Button>
                 </Col>
               </Row>

@@ -8,8 +8,8 @@ const transporter = nodemailer.createTransport({
     // auth object specifying email and password of gmail, which...
     // ... allows nodemailer to login and send email using gmail account
     auth: {
-        user: 'youremail@address.com',
-        pass: 'yourpassword'
+        user: 'stockify.notifications@gmail.com',
+        pass: 'Jeff_Winger_1234'
     }
 });
 
