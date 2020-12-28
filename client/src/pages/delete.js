@@ -3,7 +3,7 @@
     This is the hompage
     <Form>
       <Row>
-        <Col md>
+        <Col className="md">
           <Form.Group controlId="formEmail">
             <Form.Label>Email Adress</Form.Label>
             <Form.Control type="email" placeholder="youremail@gmail.com" />
@@ -12,7 +12,7 @@
             </Form.Text>
           </Form.Group>
         </Col>
-        <Col md>
+        <Col className="md">
           <Form.Group controlId="formPassword">
             <Form.Label>Password</Form.Label>
             <Form.Control type="Password" placeholder="Password" />

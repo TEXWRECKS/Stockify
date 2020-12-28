@@ -191,7 +191,7 @@ function Product(props) {
                 <Col md>
                   <img src={product.itemImage} alt="" className="product-photo" />
                 </Col>
-                <Col classname="product-details" md>
+                <Col className="product-details md">
                   {/* this needs to be props and also have a limit on character length */}
                   <Card.Title className="product-name">
                     {/* displays the title and allows user to click on a link to the url, opening in a new window*/}
