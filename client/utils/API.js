@@ -6,7 +6,11 @@ export default {
   setItemURL: function() {
     return axios.post("https://localhost:3000/api/");
   },
-  getItemById: function(Id) {
-    return axios.get("https://localhost:3000/api/" + Id);
+  getItem: function(url) {
+    return axios.get("https://localhost:3000/api/getItem", {
+        params: {
+            "url": url
+        }
+    });
   },
 };
