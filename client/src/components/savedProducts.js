@@ -15,10 +15,10 @@ function savedProduct() {
           </Card.Header>
           <Card.Body>
             <Row>
-              <Col md>
+              <Col className="md">
                 <img src={Lego} alt="" className="photo-small" />
               </Col>
-              <Col md>
+              <Col className="md">
                 <Card.Title className="product-name">
                   LEGO Technic Bugatti Chiron 42083 Race Car Building Kit and
                   Engineering Toy, Adult Collectible Sports Car with Scale Model
@@ -31,7 +31,7 @@ function savedProduct() {
                   <strong style={{ color: 'red' }}>Out of Stock</strong>
                 </Card.Text>
               </Col>
-              <Col md-2 className="btn-col" md>
+              <Col className="mb-2 btn-col md">
                 <Button variant="primary" className="view-btn">
                   View Product
                 </Button>
