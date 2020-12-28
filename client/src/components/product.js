@@ -1,10 +1,19 @@
 import React, {useState} from 'react';
 import '../App.css';
 import { Card, Container, Row, Col, Button } from 'react-bootstrap';
-import Lego from '../assets/images/lego.jpg';
+// import Lego from '../assets/images/lego.jpg';
 
 
 function Product(props) {
+  // Initially stores the searched product in "state"
+  const[product, setProduct] = useState({
+    itemTitle: "",
+    itemUrl: "",
+    itemImage: "",
+    itemPrice: 0,
+    itemStatus: "",
+    itemPriceAlert: 0,
+  })
 
   // Creating a state that holds which question we are asking
   const[counter, setCounter] = useState(0);
@@ -140,7 +149,7 @@ function Product(props) {
             // Counter===1 question (Question 2)
             : counter===1 ?
             <Card.Subtitle className="mb-2 text-muted product-subtext">
-            Do you want to be notified of product availability changes?
+              Do you want to be notified of product availability changes?
             </Card.Subtitle>
             // Ends counter===1 question (Question 2)
 
@@ -180,20 +189,19 @@ function Product(props) {
             <Container className="product-output">
               <Row>
                 <Col md>
-                  <img src={Lego} alt="" className="product-photo" />
+                  <img src={product.itemImage} alt="" className="product-photo" />
                 </Col>
                 <Col classname="product-details" md>
                   {/* this needs to be props and also have a limit on character length */}
                   <Card.Title className="product-name">
-                    LEGO Technic Bugatti Chiron 42083 Race Car Building Kit and
-                    Engineering Toy, Adult Collectible Sports Car with Scale
-                    Model Engine (3599 Pieces)
+                    {/* displays the title and allows user to click on a link to the url, opening in a new window*/}
+                    <a href={product.itemUrl} target="_blank">{product.itemTitle}</a>
                   </Card.Title>
                   <Card.Subtitle className="mb-2 text-muted product-price">
-                    Price: <strong>$349.95</strong>
+                    Price: <strong>{product.itemPrice}</strong>
                   </Card.Subtitle>
                   <Card.Text className="product-status">
-                    <strong style={{ color: 'red' }}>Out of Stock</strong>
+                    <strong style={{ color: 'red' }}>{product.itemStatus}</strong>
                   </Card.Text>
 
                   {/* Counter===0 button set (for Question 1)*/}
@@ -247,7 +255,7 @@ function Product(props) {
                   // Counter===777 email address text entry and submit button
                   : counter===777 ?
                   <>
-                  <input handleFormSubmit={() => emailEntry} type="text"/> {/* *** NEED to add to this to provide text box for user to enter email address */}
+                  {/* <input handleFormSubmit={() => emailEntry} type="text"/> *** NEED to add to this to provide text box for user to enter email address */}
                   <Button onclick={() => emailSubmit} variant="success" className="product-btn">
                     Submit
                   </Button>
