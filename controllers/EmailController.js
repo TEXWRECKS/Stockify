@@ -1,7 +1,6 @@
 // requiring nodemailer
 const nodemailer = require('nodemailer');
 
-
 function sendMail(user, pass, to, item, alertType){
     // transport service to send emails for nodemailer
     const transporter = nodemailer.createTransport({

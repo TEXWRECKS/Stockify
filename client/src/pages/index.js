@@ -1,9 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../App.css';
 import { Row, Col, Button, Form } from 'react-bootstrap';
 import Banner from '../assets/images/Stuck at Home - Searching.png';
+import Axios from 'axios';
 
 function Index() {
+  // stores whatever was typed in the input element
+  const[userInput, setUserInput] = useState(
+    {url: ""})
+  // on change of the element, this will grab the value inputted and set state with that value
+  function handleInputChange(event){
+    setUserInput(
+      {url: event.target.value})
+  }
+  // with the state already set with the url, this will make the call passing the url to the backend
+  function handleSearch(){
+    Axios.get("/api/getItem", userInput).then(res =>{
+      console.log(res);
+    })
+  }
   return (
     <div className="App">
       <div class="jumbotron jumbotron-fluid mt-10">
@@ -19,8 +34,9 @@ function Index() {
                   type="search"
                   placeholder="URL or Amazon Product Id"
                   className=" product-search mr-2"
+                  onChange={handleInputChange}
                 />
-                <Button variant="outline-primary">Search</Button>
+                <Button onClick={() => handleSearch} variant="outline-primary">Search</Button>
               </Form>
             </Col>
             <Col md-4>

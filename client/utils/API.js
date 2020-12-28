@@ -4,10 +4,10 @@ import axios from "axios";
 
 export default {
   setItemURL: function() {
-    return axios.post("https://localhost:3000/api/");
+    return axios.post("https://localhost:3001/api/");
   },
   getItem: function(url) {
-    return axios.get("https://localhost:3000/api/getItem", {
+    return axios.get("https://localhost:3001/api/getItem", {
         params: {
             "url": url
         }
