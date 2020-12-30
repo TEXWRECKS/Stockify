@@ -9,13 +9,34 @@ import SavedProducts from './components/savedProducts';
 
 function App() {
   const [theme, setTheme] = useState('light');
+  const [product, setProduct] = useState({
+    itemTitle: "",
+    itemUrl: "",
+    itemImage: "",
+    itemPrice: 0,
+    itemStatus: "",
+    itemPriceAlert: 0,
+  })
+
+  function updateProductState(item){
+    setProduct({
+      itemTitle: item.data.title,
+      itemUrl: item.data.url,
+      itemImage: item.data.image,
+      itemPrice: item.data.price,
+      itemStatus: item.data.availability,
+    })
+  }
+
   return (
     <Router>
       <Navbar />
       <div>
-        <Route exact path="/" component={Index} />
+        <Route exact path="/" render={() => (<Index updateProductState={updateProductState}/>)} />
         <Route exact path="/products" component={Products} />
-        <ProductCard />
+        {product.itemTitle != "" && 
+          <ProductCard item={product}/>
+        }
         <SavedProducts />
       </div>
     </Router>
