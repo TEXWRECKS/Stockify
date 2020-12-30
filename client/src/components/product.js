@@ -6,14 +6,14 @@ import { Card, Container, Row, Col, Button } from 'react-bootstrap';
 
 function Product(props) {
   // Initially stores the searched product in "state"
-  const[product, setProduct] = useState({
-    itemTitle: "",
-    itemUrl: "",
-    itemImage: "",
-    itemPrice: 0,
-    itemStatus: "",
-    itemPriceAlert: 0,
-  })
+  // const[product, setProduct] = useState({
+  //   itemTitle: "",
+  //   itemUrl: "",
+  //   itemImage: "",
+  //   itemPrice: 0,
+  //   itemStatus: "",
+  //   itemPriceAlert: 0,
+  // })
 
   // Creating a state that holds which question we are asking
   const[counter, setCounter] = useState(0);
@@ -189,19 +189,19 @@ function Product(props) {
             <Container className="product-output">
               <Row>
                 <Col md>
-                  <img src={product.itemImage} alt="" className="product-photo" />
+                  <img src={props.item.itemImage} alt="" className="product-photo" />
                 </Col>
                 <Col className="product-details md">
                   {/* this needs to be props and also have a limit on character length */}
                   <Card.Title className="product-name">
                     {/* displays the title and allows user to click on a link to the url, opening in a new window*/}
-                    <a href={product.itemUrl} target="_blank">{product.itemTitle}</a>
+                    <a href={props.item.itemUrl} target="_blank">{props.item.itemTitle}</a>
                   </Card.Title>
                   <Card.Subtitle className="mb-2 text-muted product-price">
-                    Price: <strong>{product.itemPrice}</strong>
+                    Price: <strong>{props.item.itemPrice}</strong>
                   </Card.Subtitle>
                   <Card.Text className="product-status">
-                    <strong style={{ color: 'red' }}>{product.itemStatus}</strong>
+                    <strong style={{ color: 'red' }}>{props.item.itemStatus}</strong>
                   </Card.Text>
 
                   {/* Counter===0 button set (for Question 1)*/}

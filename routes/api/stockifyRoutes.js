@@ -17,8 +17,8 @@ router.post("/ids", (req, res) => {
 
 router.post("/getItem", async (req, res) => {
     // reads the url field from the body of the message sent by the front end
-    // console.log(req.body)
-    url = req.body.userInput.url
+    console.log(req.body)
+    url = req.body.url
     item = await getItem(url)
     console.log(item);
     res.json(item);

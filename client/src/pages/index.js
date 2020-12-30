@@ -4,7 +4,7 @@ import { Row, Col, Button, Form } from 'react-bootstrap';
 import Banner from '../assets/images/Stuck at Home - Searching.png';
 import Axios from 'axios';
 
-function Index() {
+function Index(props) {
   // stores whatever was typed in the input element
   const[userInput, setUserInput] = useState(
     {url: ""})
@@ -18,7 +18,9 @@ function Index() {
     console.log("Search button clicked")
     console.log(userInput)
     Axios.post("/api/getItem", userInput).then(res =>{
-      console.log(res);
+      // console.log(res.data);
+      // Updates the product state on the App.js component
+      props.updateProductState(res)
     }).catch(err => console.log(err))
   }
   return (

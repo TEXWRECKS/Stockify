@@ -2,8 +2,9 @@ const nightmare = require('nightmare')()
 const db = require("../models");
 // const mongoose = require("mongoose");  // UNCOMMENT THIS TO TEST
 
-// getItem takes in a URL and parses it for item information
+// getItem takes in a URL and parses it for item information 
 async function getItem(url){
+    console.log(`Item URL being scraped by nightmare ${url}`)
     const item = await nightmare.goto(url)
                     .wait("#landingImage")
                     .evaluate(() => {
@@ -15,9 +16,12 @@ async function getItem(url){
                         return item
                     })
                     .end()
-                    .catch(err => console.error(err))
+                    .catch(err => {
+                        console.error(err)
+                        return null
+                    })
     item.url = url
-    console.log(item)
+    // console.log(item)
     return item
 }
 
@@ -36,7 +40,7 @@ async function saveItem(user, item){
     record.save()
     console.log(`${item.title} Saved to DB for ${user}`)
 }).catch(err => console.error(err))
-}
+};
 
 
 module.exports = {getItem, saveItem};
