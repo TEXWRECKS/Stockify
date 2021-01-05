@@ -21,7 +21,7 @@ async function getItem(url){
                         return null
                     })
     item.url = url
-    // console.log(item)
+    console.log(item)
     return item
 }
 
