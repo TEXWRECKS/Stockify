@@ -5,16 +5,6 @@ import { Card, Container, Row, Col, Button } from 'react-bootstrap';
 
 
 function Product(props) {
-  // Initially stores the searched product in "state"
-  // const[product, setProduct] = useState({
-  //   itemTitle: "",
-  //   itemUrl: "",
-  //   itemImage: "",
-  //   itemPrice: 0,
-  //   itemStatus: "",
-  //   itemPriceAlert: 0,
-  // })
-
   // Creating a state that holds which question we are asking
   const[counter, setCounter] = useState(0);
   
@@ -34,7 +24,15 @@ function Product(props) {
     event.preventDefault()
     // *** NEED to write code that will save the url that was searched, in case the user presses "Back" in the 404 option provided to them...
     // ... if they click this "No" button
-
+    console.log("No has been clicked")
+    props.updateProductState({ 
+      data: { 
+        title: "",
+        url: "",
+        image: "",
+        price: 0,
+        availability: "",
+    }});
     // setting the counter to 404 to prompt user to check their url entry and try again, or to return to the product page
     setCounter(404)
     };
@@ -207,10 +205,10 @@ function Product(props) {
                   {/* Counter===0 button set (for Question 1)*/}
                   {counter===0 ?
                   <>
-                  <Button onClick={() => question1Yes} variant="success" className="product-btn">
+                  <Button onClick={question1Yes} variant="success" className="product-btn">
                     Yes
                   </Button>
-                  <Button onClick={() => question1No} variant="outline-primary" className="product-btn">
+                  <Button onClick={question1No} variant="outline-primary" className="product-btn">
                     No
                   </Button>
                   </>
