@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^12.5.0",
     "axios": "^0.21.1",
     "bootstrap": "^4.5.3",
+    "nodemon": "^2.0.6",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.0",
     "react-bootstrap-validation": "^0.1.11",
