@@ -32,7 +32,7 @@ function sendMail(user, pass, to, item, alertType){
     transporter.sendMail(mailOptions, (err, info) => {
         if(err)
             console.log(err)
-        else
+        else 
             console.log(info);
     });
 }

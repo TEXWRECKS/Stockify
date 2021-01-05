@@ -15,13 +15,12 @@ async function getItem(url){
                         item.availability = document.getElementById("availability") ? document.getElementById("availability").innerText : ""
                         return item
                     })
-                    .end()
                     .catch(err => {
                         console.error(err)
                         return null
                     })
     item.url = url
-    // console.log(item)
+    console.log(item)
     return item
 }
 
