@@ -35,7 +35,7 @@ function App() {
         <Route exact path="/" render={() => (<Index updateProductState={updateProductState}/>)} />
         <Route exact path="/products" component={Products} />
         {product.itemTitle != "" && 
-          <ProductCard item={product}/>
+          <ProductCard item={product} updateProductState={updateProductState}/>
         }
         <SavedProducts />
       </div>
