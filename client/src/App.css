@@ -102,8 +102,7 @@
 }
 
 .product-photo {
-  width: 200px;
-  height: 190px;
+  width: 300px;
   display: flex;
   align-items: center;
   margin-left: 100px;

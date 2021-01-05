@@ -15,7 +15,6 @@ async function getItem(url){
                         item.availability = document.getElementById("availability") ? document.getElementById("availability").innerText : ""
                         return item
                     })
-                    .end()
                     .catch(err => {
                         console.error(err)
                         return null
