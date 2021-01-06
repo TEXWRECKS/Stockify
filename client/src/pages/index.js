@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../App.css';
 import { Row, Col, Button, Form } from 'react-bootstrap';
 import Banner from '../assets/images/Stuck at Home - Searching.png';
-import Axios from 'axios';
+import API from '../utils/API';
 
 function Index(props) {
   // stores whatever was typed in the input element
@@ -16,10 +16,11 @@ function Index(props) {
   // with the state already set with the url, this will make the call passing the url to the backend
   function handleSearch(){
     console.log("Search button clicked")
-    console.log(userInput)
-    Axios.post("/api/getItem", userInput).then(res =>{
+    props.updateIsLoadingState(true)
+    API.getItem(userInput.url).then(res =>{
       // console.log(res.data);
       // Updates the product state on the App.js component
+      props.updateIsLoadingState(false)
       props.updateProductState(res)
     }).catch(err => console.log(err))
   }

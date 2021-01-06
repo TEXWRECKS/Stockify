@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import '../App.css';
 import { Card, Container, Row, Col, Button } from 'react-bootstrap';
-// import Lego from '../assets/images/lego.jpg';
+import API from '../utils/API';
 
 
 function Product(props) {
@@ -13,8 +13,10 @@ function Product(props) {
   // Question 1 "Yes" onclick function
   const question1Yes = (event) => {
     event.preventDefault()
-    // *** NEED to write code here to save the product to the saved products list/page
-
+    let item = props.readProductState()
+    API.saveItem(item).then(res =>{
+      console.log(res)
+    }).catch(err => console.log(err))
     // changing counter to 1, to present the statement
     setCounter(1)
   };
@@ -25,28 +27,14 @@ function Product(props) {
     // *** NEED to write code that will save the url that was searched, in case the user presses "Back" in the 404 option provided to them...
     // ... if they click this "No" button
     console.log("No has been clicked")
-    props.updateProductState({ 
-      data: { 
-        title: "",
-        url: "",
-        image: "",
-        price: 0,
-        availability: "",
-    }});
+    props.clearProductState();
     // setting the counter to 404 to prompt user to check their url entry and try again, or to return to the product page
     setCounter(404)
     };
     // end counter===0
   
   return (
-    <div
-    //   style={{
-    //     position: 'absolute',
-    //     left: '50%',
-    //     top: '50%',
-    //     transform: 'translate(-50%, -50%)',
-    //   }}
-    >
+    <div>
       <Container className="product-container md">
         <Card className="product-card">
           <Card.Body>

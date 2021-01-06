@@ -176,3 +176,13 @@
   float: right;
   margin-right: 50px;
 }
+
+.spinner {
+  text-align: center;
+}
+
+.loading {
+  color: #00BFFF;
+  font-weight: bold;
+  font-size: 20px;
+}
