@@ -5,7 +5,7 @@ import '../App.css';
 // Depending on the current path, this component sets the "active" class on the appropriate navigation link item
 function Navbar() {
   return (
-    <nav className="navbar navbar-expand-lg bg-light ">
+    <nav className="navbar navbar-expand-lg  ">
       <Link className="navbar-brand" to="/">
         Stockify
       </Link>
