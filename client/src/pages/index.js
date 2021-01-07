@@ -3,6 +3,7 @@ import '../App.css';
 import { Card, Row, Col, Button, Form } from 'react-bootstrap';
 import Banner from '../assets/images/Stuck at Home - Searching.png';
 import Axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function Index(props) {
   // stores whatever was typed in the input element
@@ -37,6 +38,7 @@ function Index(props) {
               /> */}
               <Card.Body>
                 <Card.Text>
+                  <FontAwesomeIcon icon="faCoffee" />
                   1. Find the desired product on Amazon Copy the Amazon product
                   item URL into the Stockify search bar
                 </Card.Text>
