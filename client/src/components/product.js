@@ -56,7 +56,7 @@ function Product(props) {
     >
       <Container className="product-container md">
         {/* this is the new card */}
-        <Card style={{ width: '25rem' }}>
+        <Card style={{ width: '28rem' }}>
           <img
             src={props.item.itemImage}
             alt=""
@@ -73,13 +73,29 @@ function Product(props) {
             </Card.Text>
           </Card.Body>
           <ListGroup className="list-group-flush">
-            <ListGroupItem>
+            {/* <ListGroupItem>
               Price: <strong>{props.item.itemPrice}</strong>
-            </ListGroupItem>
+            </ListGroupItem> */}
           </ListGroup>
           <Card.Body>
-            <Card.Link href="#">Card Link</Card.Link>
-            <Card.Link href="#">Another Link</Card.Link>
+            <Card.Subtitle className="mb-2 text-muted product-subtext">
+              Would you like to save this product to your "Saved Products" page
+              for notification capabilities?
+            </Card.Subtitle>
+            <Button
+              onClick={question1Yes}
+              variant="success"
+              className="product-btn"
+            >
+              Yes
+            </Button>
+            <Button
+              onClick={question1No}
+              variant="outline-primary"
+              className="product-btn"
+            >
+              No
+            </Button>
           </Card.Body>
         </Card>
         {/* this ends the new card */}
