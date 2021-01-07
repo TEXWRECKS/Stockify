@@ -1,43 +1,29 @@
 .App {
   text-align: center;
 }
+/* Navbar */
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.navbar-brand {
+  font-weight: bolder;
+  font-style: italic;
+  color: #f19276;
+  font-family: 'Poppins', sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+nav .navbar-nav li a {
+  color: white !important;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.navbar-nav {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.navbar {
+  background-color: #131921;
+  color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+/* /* Index page */
 
-/* Index page - product search */
 .jumbotron {
   background-color: #d8eef7;
   max-height: 310px;
@@ -45,13 +31,7 @@
   padding-bottom: 70px;
 }
 
-.input-col {
-  margin-top: 60px;
-  margin-left: 30px;
-}
-
 .product-search {
-  /* margin-top: 20px; */
   margin-right: 10px;
   padding-left: 10px;
   font-family: 'Poppins', sans-serif;
@@ -79,26 +59,6 @@
   margin-left: 5px;
 }
 
-/* Navbar */
-
-.navbar-brand {
-  font-weight: bolder;
-  font-style: italic;
-  color: #f19276;
-  font-family: 'Poppins', sans-serif;
-}
-
-nav .navbar-nav li a {
-  color: white !important;
-}
-.navbar-nav {
-  color: white;
-}
-
-.navbar {
-  background-color: #131921;
-  color: white;
-}
 /* product */
 
 .product-container {
@@ -185,25 +145,7 @@ nav .navbar-nav li a {
   margin-right: 50px;
 }
 
-/* info banner card */
-
-.infoBanner {
-  align-items: center;
-  /* border: none; */
-  background-color: grey;
-  height: 75px;
-  color: white;
-  margin-bottom: 10px;
-}
-
-.instructionBanner {
-  background-color: grey;
-}
-
-.container-info {
-  margin: 0;
-}
-/* #232f3e; */
+/* info banner cards */
 
 .info-card {
   background-color: white;
