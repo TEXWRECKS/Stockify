@@ -59,6 +59,9 @@ nav .navbar-nav li a {
   margin-left: 5px;
 }
 
+.form {
+  width: 900px;
+}
 /* product */
 
 .product-container {
@@ -72,6 +75,12 @@ nav .navbar-nav li a {
   display: flex;
   align-items: center;
   margin-left: 100px;
+}
+
+/* need help centering photo */
+.new-product-photo {
+  width: 300px;
+  text-align: center;
 }
 
 .product-output {

@@ -40,8 +40,9 @@ function Index(props) {
               </p>
               <Form inline>
                 <Form.Control
+                  size="md"
                   type="search"
-                  placeholder="URL or Amazon Product Id"
+                  placeholder="Amazon URL"
                   className=" product-search mr-2"
                   onChange={handleInputChange}
                 />
@@ -92,6 +93,7 @@ function Index(props) {
           </CardDeck>
         </div>
       </div>
+      <hr />
     </div>
   );
 }

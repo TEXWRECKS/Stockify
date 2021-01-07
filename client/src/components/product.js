@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
 import '../App.css';
-import { Card, Container, Row, Col, Button } from 'react-bootstrap';
+import {
+  Card,
+  Container,
+  Row,
+  Col,
+  Button,
+  ListGroup,
+  ListGroupItem,
+} from 'react-bootstrap';
 // import Lego from '../assets/images/lego.jpg';
 
 function Product(props) {
@@ -47,6 +55,35 @@ function Product(props) {
     //   }}
     >
       <Container className="product-container md">
+        {/* this is the new card */}
+        <Card style={{ width: '25rem' }}>
+          <img
+            src={props.item.itemImage}
+            alt=""
+            className="new-product-photo"
+          />
+          <Card.Body>
+            <Card.Title>
+              <a href={props.item.itemUrl} target="_blank">
+                {props.item.itemTitle}
+              </a>
+            </Card.Title>
+            <Card.Text>
+              <strong style={{ color: 'red' }}>{props.item.itemStatus}</strong>
+            </Card.Text>
+          </Card.Body>
+          <ListGroup className="list-group-flush">
+            <ListGroupItem>
+              Price: <strong>{props.item.itemPrice}</strong>
+            </ListGroupItem>
+          </ListGroup>
+          <Card.Body>
+            <Card.Link href="#">Card Link</Card.Link>
+            <Card.Link href="#">Another Link</Card.Link>
+          </Card.Body>
+        </Card>
+        {/* this ends the new card */}
+
         <Card className="product-card">
           <Card.Body>
             <Card.Title className="product-found">Product Found</Card.Title>
