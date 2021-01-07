@@ -40,8 +40,9 @@
 /* Index page - product search */
 .jumbotron {
   background-color: #d8eef7;
-  max-height: 300px;
+  max-height: 310px;
   padding: 10px;
+  padding-bottom: 70px;
 }
 
 .input-col {
@@ -51,7 +52,6 @@
 
 .product-search {
   /* margin-top: 20px; */
-  width: 1000px;
   margin-right: 10px;
   padding-left: 10px;
   font-family: 'Poppins', sans-serif;
@@ -76,7 +76,7 @@
 
 .search-col {
   margin-top: 70px;
-  margin-left: 10px;
+  margin-left: 5px;
 }
 
 /* Navbar */
@@ -88,6 +88,9 @@
   font-family: 'Poppins', sans-serif;
 }
 
+nav .navbar-nav li a {
+  color: white !important;
+}
 .navbar-nav {
   color: white;
 }
@@ -186,14 +189,38 @@
 
 .infoBanner {
   align-items: center;
-  border: none;
-  background-color: #232f3e;
+  /* border: none; */
+  background-color: grey;
   height: 75px;
   color: white;
-  margin-left: 90px;
   margin-bottom: 10px;
 }
 
 .instructionBanner {
+  background-color: grey;
+}
+
+.container-info {
+  margin: 0;
+}
+/* #232f3e; */
+
+.info-card {
+  background-color: white;
+  padding: 10px;
+  margin: 10px;
+  padding-bottom: 40px;
+  color: black;
+  border: none;
+}
+
+/* top banner */
+
+.top-banner {
   background-color: #232f3e;
+  font-weight: 20px;
+  font-style: italic;
+  color: white;
+  padding-top: 20px;
+  height: 60px;
 }
