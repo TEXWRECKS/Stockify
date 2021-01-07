@@ -6,7 +6,7 @@ import Lego from '../assets/images/lego.jpg';
 function savedProduct() {
   return (
     <div>
-      <div className="container">
+      <Container classname="product-container">
         <h1 className="product-saved-heading">All Saved Products</h1>
 
         <Card>
@@ -39,7 +39,7 @@ function savedProduct() {
             </Row>
           </Card.Body>
         </Card>
-      </div>
+      </Container>
     </div>
   );
 }
