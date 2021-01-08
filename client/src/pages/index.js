@@ -40,7 +40,7 @@ function Index(props) {
                 <Form.Control
                   size="md"
                   type="search"
-                  placeholder="Amazon URL"
+                  placeholder="Amazon Product URL"
                   className=" product-search mr-2"
                   onChange={handleInputChange}
                 />

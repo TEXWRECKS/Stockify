@@ -11,3 +11,118 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Saved products "product picture" */
+.prod-picture {
+  display: block;
+  margin: auto;
+  float: left;
+  /* height: 100%;
+  width: auto; */
+}
+
+/* Saved products "product info" */
+.description {
+  display: block;
+  text-align: center;
+  margin: auto;
+  height: 100%;
+  width: auto;
+}
+
+/* Saved products "notification preference" */
+.notification-preference {
+  display: block;
+  text-align: center;
+  margin: auto;
+  height: 100%;
+  width: auto;
+}
+
+/* Saved products "view product" */
+.btn-col {
+  display: block;
+  margin-right: 50px;
+  height: 100%;
+  width: auto;
+}
+
+/* Saved products "Price" and "Stock" */
+.price-stock {
+  display: block;
+  text-align: center;
+  margin-left: 50px;
+  height: 100%;
+  width: auto;
+}
+
+/* Saved products toggle-buttons */
+.toggle-buttons {
+  display: block;
+  margin-left: 50px;
+  height: 100%;
+  width: auto;
+}
+
+
+/* Screen Wrap Section... */
+
+/* Extra small devices (portrait phones) */
+@media screen and (min-width: 576px) and (max-width: 767.98px) {
+  /* The body's bg color will be #333 */
+  body {
+    background-color: #333;
+  }
+  /* The wrapper's width will be 600px */
+  .wrapper {
+    width: 100%;
+  }
+}
+
+/* Small devices (landscape phones) */
+@media screen and (min-width: 576px) and (max-width: 767.98px) {
+  /* The body's bg color will be #333 */
+  body {
+    background-color: #333;
+  }
+  /* The wrapper's width will be 600px */
+  .wrapper {
+    width: 100%;
+  }
+}
+
+/* Medium devices (tablets) */
+@media screen and (min-width: 576px) and (max-width: 767.98px) {
+  /* The body's bg color will be #333 */
+  body {
+    background-color: #333;
+  }   
+  /* The wrapper's width will be 600px */
+  .wrapper {
+    width: 100%;
+  }
+}
+
+/* Large devices (desktops) */
+@media screen and (min-width: 576px) and (max-width: 767.98px) {
+  /* The body's bg color will be #333 */
+  body {
+    background-color: #333;
+  }   
+  /* The wrapper's width will be 600px */
+  .wrapper {
+    width: 100%;
+  }
+}
+
+/* Extra large devices (large desktops) */
+@media screen and (min-width: 576px) and (max-width: 767.98px) {
+  /* The body's bg color will be #333 */
+  body {
+    background-color: #333;
+  }   
+  /* The wrapper's width will be 600px */
+  .wrapper {
+    width: 100%;
+  }
+}
