@@ -24,18 +24,6 @@ function Navbar() {
               Home
             </Link>
           </li>
-          <li className="nav-item">
-            <Link
-              to="/products"
-              className={
-                window.location.pathname === '/products'
-                  ? 'nav-link active'
-                  : 'nav-link'
-              }
-            >
-              Products
-            </Link>
-          </li>
         </ul>
       </div>
     </nav>

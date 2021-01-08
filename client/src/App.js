@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './components/icons';
+import './components/Icons';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import Index from './pages/index';

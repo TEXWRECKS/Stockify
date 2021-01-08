@@ -3,8 +3,6 @@ import '../App.css';
 import { Card, Row, Col, Button, Form, CardDeck } from 'react-bootstrap';
 import Banner from '../assets/images/Stuck at Home - Searching.png';
 import API from '../utils/API';
-import Axios from 'axios';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function Index(props) {
   // stores whatever was typed in the input element
