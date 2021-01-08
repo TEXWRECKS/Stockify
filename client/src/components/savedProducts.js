@@ -2,8 +2,17 @@ import React from 'react';
 import '../App.css';
 import { Card, Container, Row, Col, Button } from 'react-bootstrap';
 import Lego from '../assets/images/lego.jpg';
+import ToggleButton from "react-bootstrap/ToggleButton";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-function savedProduct() {
+function SavedProduct() {
+
+  // Price Change toggle button variable for setting state
+  const [priceChecked, setPriceChecked] = React.useState(false);
+  // Avialability Change toggle button variable for setting state
+  const [availabilityChecked, setAvailabilityChecked] = React.useState(false);
+
   return (
     <div>
       <Container classname="product-container">
@@ -36,6 +45,22 @@ function savedProduct() {
                   View Product
                 </Button>
               </Col>
+
+              {/* Price Change Notification Toggle Button*/}
+              <>
+                <ButtonGroup toggle className="mb-2">
+                  <ToggleButton type="checkbox"
+                    checked={priceChecked} value="1" onChange={e => setPriceChecked(e.currentTarget.checked)}>Price Change</ToggleButton>
+                </ButtonGroup>
+                <br />
+              </>
+              {/* Availability Change Notification Toggle Button */}
+              <>
+                <ButtonGroup toggle className="mb-2">
+                  <ToggleButton type="checkbox"
+                    checked={availabilityChecked} value="1" onChange={e => setAvailabilityChecked(e.currentTarget.checked)}>Availability Change</ToggleButton>
+                </ButtonGroup>
+              </>
             </Row>
           </Card.Body>
         </Card>
@@ -44,4 +69,4 @@ function savedProduct() {
   );
 }
 
-export default savedProduct;
+export default SavedProduct;
