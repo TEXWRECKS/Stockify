@@ -35,6 +35,7 @@ nav .navbar-nav li a {
   margin-right: 10px;
   padding-left: 10px;
   font-family: 'Poppins', sans-serif;
+  width: 75% !important;
 }
 
 .search-title {
@@ -73,7 +74,7 @@ nav .navbar-nav li a {
 
 .product-card {
   width: 50%;
-  padding: 20px;
+  margin: 20px;
   align-items: center;
   margin-left: auto;
   margin-right: auto;
@@ -88,12 +89,11 @@ nav .navbar-nav li a {
 }
 
 .product-button-yes_no {
-  display:inline-block;
+  display: inline-block;
 }
 
 /* need help centering photo */
 .new-product-photo {
-  width: 300px;
   text-align: center;
 }
 
@@ -161,8 +161,7 @@ nav .navbar-nav li a {
 .view-btn {
   background-color: #f19276;
   border: #f19276;
-  float: right;
-  margin-right: 50px;
+  align-items: right;
 }
 
 .spinner {
@@ -170,7 +169,7 @@ nav .navbar-nav li a {
 }
 
 .loading {
-  color: #00BFFF;
+  color: #00bfff;
   font-weight: bold;
   font-size: 20px;
 }
@@ -180,6 +179,7 @@ nav .navbar-nav li a {
   background-color: white;
   padding: 10px;
   margin: 10px;
+  margin-top: 50px;
   padding-bottom: 40px;
   color: black;
   border: none;
@@ -193,5 +193,35 @@ nav .navbar-nav li a {
   font-style: italic;
   color: white;
   padding-top: 20px;
-  height: 60px;
+}
+
+@media screen and (max-width: 992px) {
+  .top-banner {
+    height: 100px;
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 993px) {
+  .top-banner {
+    height: 60px;
+    text-align: center;
+  }
+}
+
+/* product photo */
+@media screen and (max-width: 992px) {
+  .new-product-photo {
+    width: 100px;
+  }
+}
+
+@media screen and (min-width: 993px) {
+  .new-product-photo {
+    width: 300px;
+  }
+}
+
+.center {
+  align-items: center;
 }

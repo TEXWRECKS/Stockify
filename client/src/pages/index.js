@@ -12,15 +12,17 @@ function Index(props) {
     setUserInput({ url: event.target.value });
   }
   // with the state already set with the url, this will make the call passing the url to the backend
-  function handleSearch(){
-    console.log("Search button clicked")
-    props.updateIsLoadingState(true)
-    API.getItem(userInput.url).then(res =>{
-      // console.log(res.data);
-      // Updates the product state on the App.js component
-      props.updateIsLoadingState(false)
-      props.updateProductState(res)
-    }).catch(err => console.log(err))
+  function handleSearch() {
+    console.log('Search button clicked');
+    props.updateIsLoadingState(true);
+    API.getItem(userInput.url)
+      .then((res) => {
+        // console.log(res.data);
+        // Updates the product state on the App.js component
+        props.updateIsLoadingState(false);
+        props.updateProductState(res);
+      })
+      .catch((err) => console.log(err));
   }
   return (
     <div className="App">
@@ -33,6 +35,7 @@ function Index(props) {
           <Row>
             <Col className="search-col md-8">
               <h1 className="search-title">Search for your Product</h1>
+              <i className="fas fa-search" />
               <p className="search-text">
                 and we will notify you when it's back in stock.
               </p>
@@ -49,7 +52,7 @@ function Index(props) {
                 </Button>
               </Form>
             </Col>
-            <Col className="md-4">
+            <Col className="md-4 d-none d-sm-block d-sm-none d-md-block d-md-none d-lg-block">
               <img className="banner-photo" src={Banner} alt="bannerphoto" />
             </Col>
           </Row>

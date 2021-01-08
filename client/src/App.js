@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 // import './components/Icons';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
-import Index from './pages/index';
+import Index from './pages/Index';
 import Products from './pages/Products';
 import Navbar from './components/Navbar';
 import ProductCard from './components/Product';
