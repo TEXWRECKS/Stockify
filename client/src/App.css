@@ -40,7 +40,6 @@
 /* Index page - product search */
 .jumbotron {
   background-color: #d8eef7;
-  margin: 40px;
   max-height: 300px;
   padding: 10px;
 }
@@ -89,10 +88,14 @@
   font-family: 'Poppins', sans-serif;
 }
 
-.nav-item {
-  color: black;
+.navbar-nav {
+  color: white;
 }
 
+.navbar {
+  background-color: #131921;
+  color: white;
+}
 /* product */
 
 .product-container {
@@ -123,6 +126,7 @@
   float: left;
   margin: 2px;
   width: 100px;
+  margin-top: 10px;
 }
 
 .product-page {
@@ -142,8 +146,9 @@
 .product-subtext {
   font-size: 15px;
   font-weight: 20px;
-  margin-top: -2px;
-  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  text-align: left;
   font-family: 'Poppins', sans-serif;
 }
 
@@ -185,4 +190,19 @@
   color: #00BFFF;
   font-weight: bold;
   font-size: 20px;
+}
+/* info banner card */
+
+.infoBanner {
+  align-items: center;
+  border: none;
+  background-color: #232f3e;
+  height: 75px;
+  color: white;
+  margin-left: 90px;
+  margin-bottom: 10px;
+}
+
+.instructionBanner {
+  background-color: #232f3e;
 }

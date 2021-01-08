@@ -14,6 +14,7 @@ function Product(props) {
   const question1Yes = (event) => {
     event.preventDefault()
     let item = props.readProductState()
+    console.log()
     API.saveItem(item).then(res =>{
       console.log(res)
     }).catch(err => console.log(err))

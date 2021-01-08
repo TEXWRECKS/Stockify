@@ -12,22 +12,22 @@ function App() {
   const [theme, setTheme] = useState('light');
   const [isLoading, setIsLoading] = useState({})
   const [product, setProduct] = useState({
-    itemTitle: "",
-    itemUrl: "",
-    itemImage: "",
+    itemTitle: '',
+    itemUrl: '',
+    itemImage: '',
     itemPrice: 0,
-    itemStatus: "",
+    itemStatus: '',
     itemPriceAlert: 0,
-  })
+  });
 
-  function updateProductState(item){
+  function updateProductState(item) {
     setProduct({
       itemTitle: item.data.title,
       itemUrl: item.data.url,
       itemImage: item.data.image,
       itemPrice: item.data.price,
       itemStatus: item.data.availability,
-    })
+    });
   }
 
   function clearProductState(){
