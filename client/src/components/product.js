@@ -2,6 +2,15 @@ import React, {useState} from 'react';
 import '../App.css';
 import { Card, Container, Row, Col, Button } from 'react-bootstrap';
 import API from '../utils/API';
+import {
+  Card,
+  Container,
+  Row,
+  Col,
+  Button,
+  ListGroup,
+  ListGroupItem,
+} from 'react-bootstrap';
 
 
 function Product(props) {
@@ -37,6 +46,51 @@ function Product(props) {
   return (
     <div>
       <Container className="product-container md">
+        {/* this is the new card */}
+        <Card style={{ width: '28rem' }}>
+          <img
+            src={props.item.itemImage}
+            alt=""
+            className="new-product-photo"
+          />
+          <Card.Body>
+            <Card.Title>
+              <a href={props.item.itemUrl} target="_blank">
+                {props.item.itemTitle}
+              </a>
+            </Card.Title>
+            <Card.Text>
+              <strong style={{ color: 'red' }}>{props.item.itemStatus}</strong>
+            </Card.Text>
+          </Card.Body>
+          <ListGroup className="list-group-flush">
+            {/* <ListGroupItem>
+              Price: <strong>{props.item.itemPrice}</strong>
+            </ListGroupItem> */}
+          </ListGroup>
+          <Card.Body>
+            <Card.Subtitle className="mb-2 text-muted product-subtext">
+              Would you like to save this product to your "Saved Products" page
+              for notification capabilities?
+            </Card.Subtitle>
+            <Button
+              onClick={question1Yes}
+              variant="success"
+              className="product-btn"
+            >
+              Yes
+            </Button>
+            <Button
+              onClick={question1No}
+              variant="outline-primary"
+              className="product-btn"
+            >
+              No
+            </Button>
+          </Card.Body>
+        </Card>
+        {/* this ends the new card */}
+
         <Card className="product-card">
           <Card.Body>
             <Card.Title className="product-found">Product Found</Card.Title>
