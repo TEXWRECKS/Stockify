@@ -3,7 +3,7 @@ import '../App.css';
 import { Card, Container, Row, Col, Button } from 'react-bootstrap';
 import Lego from '../assets/images/lego.jpg';
 
-function savedProduct() {
+function savedProduct(props) {
   return (
     <div>
       <Container classname="product-container">
@@ -11,24 +11,22 @@ function savedProduct() {
 
         <Card>
           <Card.Header>
-            <strong style={{ color: 'green' }}>In Stock</strong>
+            <strong style={{ color: 'green' }}>{props.savedProduct.itemStatus}</strong>
           </Card.Header>
           <Card.Body>
             <Row>
               <Col className="md">
-                <img src={Lego} alt="" className="photo-small" />
+                <img src={props.savedProduct.itemImage} alt="" className="photo-small" />
               </Col>
               <Col className="md">
                 <Card.Title className="product-name">
-                  LEGO Technic Bugatti Chiron 42083 Race Car Building Kit and
-                  Engineering Toy, Adult Collectible Sports Car with Scale Model
-                  Engine (3599 Pieces)
+                  {props.savedProduct.itemTitle}
                 </Card.Title>
                 <Card.Subtitle className="mb-2 text-muted product-price">
-                  Price: <strong>$349.95</strong>
+                  Price: <strong>{props.savedProduct.itemPrice}</strong>
                 </Card.Subtitle>
                 <Card.Text className="product-status">
-                  <strong style={{ color: 'red' }}>Out of Stock</strong>
+                  <strong style={{ color: 'red' }}>{props.savedProduct.itemStatus}</strong>
                 </Card.Text>
               </Col>
               <Col className="mb-2 btn-col md">

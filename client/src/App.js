@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './components/Icons';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
@@ -8,10 +8,14 @@ import Navbar from './components/Navbar';
 import ProductCard from './components/Product';
 import SavedProducts from './components/SavedProducts';
 import Spinner from './components/Spinner';
+import API from './utils/API'
 
 function App() {
   const [theme, setTheme] = useState('light');
-  const [isLoading, setIsLoading] = useState({})
+  const [isLoading, setIsLoading] = useState({});
+  const [savedProducts, setSavedProducts] = useState({
+    productData: ''
+  });
   const [product, setProduct] = useState({
     itemTitle: '',
     itemUrl: '',
@@ -29,7 +33,7 @@ function App() {
       itemPrice: item.data.price,
       itemStatus: item.data.availability,
     });
-  }
+  };
 
   function clearProductState(){
     setProduct({
@@ -50,6 +54,13 @@ function App() {
     setIsLoading(bool)
   }
 
+  useEffect(() => {
+    API.getUsersSavedItems("smrodriguez88@gmail.com").then(res =>{
+      console.log(`User saved item data retrieved ${JSON.stringify(res.data)}`)
+      setSavedProducts({productData: res.data})
+    });
+},[]);
+
   return (
     <Router>
       <Navbar />
@@ -62,7 +73,10 @@ function App() {
         {product.itemTitle != "" && 
           <ProductCard item={product} updateProductState={updateProductState} clearProductState={clearProductState} readProductState={readProductState}/>
         }
-        <SavedProducts />
+        {savedProducts.productData.map((savedProduct) =>
+          <SavedProducts savedProduct={savedProduct}/>
+        )}
+        
       </div>
     </Router>
   );
