@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
-import './components/icons';
+import './components/Icons';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import Index from './pages/index';
 import Products from './pages/products';
-import Navbar from './components/navbar';
-import ProductCard from './components/product';
-import SavedProducts from './components/savedProducts';
+import Navbar from './components/Navbar';
+import ProductCard from './components/Product';
+import SavedProducts from './components/SavedProducts';
+import Spinner from './components/Spinner';
 
 function App() {
   const [theme, setTheme] = useState('light');
+  const [isLoading, setIsLoading] = useState({})
   const [product, setProduct] = useState({
     itemTitle: '',
     itemUrl: '',
@@ -29,19 +31,37 @@ function App() {
     });
   }
 
+  function clearProductState(){
+    setProduct({
+      itemTitle: "",
+      itemUrl: "",
+      itemImage: "",
+      itemPrice: 0,
+      itemStatus: "",
+      itemPriceAlert: 0,
+    })
+  }
+
+  function readProductState(){
+    return product;
+  }
+
+  function updateIsLoadingState(bool){
+    setIsLoading(bool)
+  }
+
   return (
     <Router>
       <Navbar />
       <div>
-        <Route
-          exact
-          path="/"
-          render={() => <Index updateProductState={updateProductState} />}
-        />
+        <Route exact path="/" render={() => (<Index updateProductState={updateProductState} clearProductState={clearProductState} updateIsLoadingState={updateIsLoadingState}/>)} />
         <Route exact path="/products" component={Products} />
-        {product.itemTitle != '' && (
-          <ProductCard item={product} updateProductState={updateProductState} />
-        )}
+        {isLoading == true &&
+        <Spinner />
+        }
+        {product.itemTitle != "" && 
+          <ProductCard item={product} updateProductState={updateProductState} clearProductState={clearProductState} readProductState={readProductState}/>
+        }
         <SavedProducts />
       </div>
     </Router>

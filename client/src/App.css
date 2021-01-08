@@ -66,8 +66,18 @@ nav .navbar-nav li a {
 
 .product-container {
   align-items: center;
-  padding: 50px;
-  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.product-card {
+  width: 50%;
+  padding: 20px;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 .product-photo {
@@ -75,6 +85,10 @@ nav .navbar-nav li a {
   display: flex;
   align-items: center;
   margin-left: 100px;
+}
+
+.product-button-yes_no {
+  display:inline-block;
 }
 
 /* need help centering photo */
@@ -95,7 +109,6 @@ nav .navbar-nav li a {
 }
 
 .product-btn {
-  float: left;
   margin: 2px;
   width: 100px;
   margin-top: 10px;
@@ -116,9 +129,7 @@ nav .navbar-nav li a {
 }
 
 .product-subtext {
-  font-size: 15px;
-  font-weight: 20px;
-  margin-top: 15px;
+  font-size: 18px;
   margin-bottom: 10px;
   text-align: left;
   font-family: 'Poppins', sans-serif;
@@ -154,7 +165,16 @@ nav .navbar-nav li a {
   margin-right: 50px;
 }
 
-/* info banner cards */
+.spinner {
+  text-align: center;
+}
+
+.loading {
+  color: #00BFFF;
+  font-weight: bold;
+  font-size: 20px;
+}
+/* info banner card */
 
 .info-card {
   background-color: white;

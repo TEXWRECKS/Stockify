@@ -26,6 +26,7 @@ async function getItem(url){
 
 // saveItem saves the item information under the specified username (email address)
 async function saveItem(user, item){
+    console.log(`[AmazonController] (saveItem) - recieved item: ${JSON.stringify(item)} for user: ${JSON.stringify(user)}`)
     db.User.findOne({email: user})
     .then(function(record){
         record.userItems.push({
@@ -34,10 +35,10 @@ async function saveItem(user, item){
             itemImage: item.image,
             itemPrice: item.price,
             itemStatus: item.availability,
-            itemPriceAlert: 0,
+            itemPriceAlert: item.itemPriceAlert,
     })
     record.save()
-    console.log(`${item.title} Saved to DB for ${user}`)
+    console.log(`[AmazonController] (saveItem) - ${item.title} Saved to DB for ${user}`)
 }).catch(err => console.error(err))
 };
 
