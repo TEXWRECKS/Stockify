@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useReducer } from 'react';
 import './components/Icons';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
@@ -14,15 +14,15 @@ function App() {
   const [theme, setTheme] = useState('light');
   const [isLoading, setIsLoading] = useState({});
   const [savedProducts, setSavedProducts] = useState({
-    productData: ''
+    productData: null
   });
   const [product, setProduct] = useState({
-    itemTitle: '',
-    itemUrl: '',
-    itemImage: '',
-    itemPrice: 0,
-    itemStatus: '',
-    itemPriceAlert: 0,
+    itemTitle: null,
+    itemUrl: null,
+    itemImage: null,
+    itemPrice: null,
+    itemStatus: null,
+    itemPriceAlert: null,
   });
 
   function updateProductState(item) {
@@ -37,28 +37,32 @@ function App() {
 
   function clearProductState(){
     setProduct({
-      itemTitle: "",
-      itemUrl: "",
-      itemImage: "",
-      itemPrice: 0,
-      itemStatus: "",
-      itemPriceAlert: 0,
-    })
-  }
+      itemTitle: null,
+      itemUrl: null,
+      itemImage: null,
+      itemPrice: null,
+      itemStatus: null,
+      itemPriceAlert: null,
+    });
+  };
 
   function readProductState(){
     return product;
-  }
+  };
 
   function updateIsLoadingState(bool){
-    setIsLoading(bool)
-  }
+    setIsLoading(bool);
+  };
 
-  useEffect(() => {
+  function getUsersSavedItems(){
     API.getUsersSavedItems("smrodriguez88@gmail.com").then(res =>{
       console.log(`User saved item data retrieved ${JSON.stringify(res.data)}`)
       setSavedProducts({productData: res.data})
     });
+  };
+
+  useEffect(() => {
+    getUsersSavedItems()
 },[]);
 
   return (
@@ -70,10 +74,10 @@ function App() {
         {isLoading == true &&
         <Spinner />
         }
-        {product.itemTitle != "" && 
-          <ProductCard item={product} updateProductState={updateProductState} clearProductState={clearProductState} readProductState={readProductState}/>
+        {product.itemTitle != null && 
+          <ProductCard item={product} updateProductState={updateProductState} clearProductState={clearProductState} readProductState={readProductState} getUsersSavedItems={getUsersSavedItems}/>
         }
-        {savedProducts.productData.map((savedProduct) =>
+        {savedProducts.productData && savedProducts.productData.map((savedProduct) =>
           <SavedProducts savedProduct={savedProduct}/>
         )}
         

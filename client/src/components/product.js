@@ -23,6 +23,8 @@ function Product(props) {
     API.saveItem(item).then(res =>{
       console.log(res)
     }).catch(err => console.log(err))
+    props.clearProductState();
+    props.getUsersSavedItems();
     // changing counter to 1, to present the statement
     setCounter(1)
   };
