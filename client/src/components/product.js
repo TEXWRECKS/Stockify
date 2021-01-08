@@ -1,50 +1,45 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import '../App.css';
 import API from '../utils/API';
-import {
-  Card,
-  Container,
-  Button,
-  ListGroup,
-} from 'react-bootstrap';
-
+import { Card, Container, Button, ListGroup } from 'react-bootstrap';
 
 function Product(props) {
   // Creating a state that holds which question we are asking
-  const[counter, setCounter] = useState(0);
-  
-  
+  const [counter, setCounter] = useState(0);
+
   // counter===0 question/button set event listener functions
   // Question 1 "Yes" onclick function
   const question1Yes = (event) => {
-    event.preventDefault()
-    let item = props.readProductState()
-    console.log()
-    API.saveItem(item).then(res =>{
-      console.log(res)
-    }).catch(err => console.log(err))
+    event.preventDefault();
+    let item = props.readProductState();
+    console.log();
+    API.saveItem(item)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
     // changing counter to 1, to present the statement
-    setCounter(1)
+    setCounter(1);
   };
 
   // Question 1 "No" onclick function
   const question1No = (event) => {
-    event.preventDefault()
+    event.preventDefault();
     // *** NEED to write code that will save the url that was searched, in case the user presses "Back" in the 404 option provided to them...
     // ... if they click this "No" button
-    console.log("No has been clicked")
+    console.log('No has been clicked');
     props.clearProductState();
     // setting the counter to 404 to prompt user to check their url entry and try again, or to return to the product page
-    setCounter(404)
-    };
-    // end counter===0
-  
+    setCounter(404);
+  };
+  // end counter===0
+
   return (
     <div>
-      <Container className="product-container md">
+      <Container className="product-container md-4">
         {/* this is the new card */}
-        <Card className="product-card">
-          <Card.Title className="mb-5">
+        <Card className="md-4 product-card">
+          <Card.Title className="mb-3">
             <h2>Item Found</h2>
           </Card.Title>
           <img
@@ -84,8 +79,8 @@ function Product(props) {
           </Card.Body>
         </Card>
         {/* this ends the new card */}
-    </Container>
-  </div>
+      </Container>
+    </div>
   );
 }
 
