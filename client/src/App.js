@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 // import './components/Icons';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
-import Index from './pages/Index';
+import Index from './pages/index';
 import Products from './pages/Products';
 import Navbar from './components/Navbar';
-import ProductCard from './components/Product';
+import ProductCard from './components/Product.js';
 import SavedProducts from './components/SavedProducts';
 import Spinner from './components/Spinner';
 
