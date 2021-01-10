@@ -35,7 +35,6 @@ function Index(props) {
           <Row>
             <Col className="search-col md-8">
               <h1 className="search-title">Search for your Product</h1>
-              <i className="fas fa-search" />
               <p className="search-text">
                 and we will notify you when it's back in stock.
               </p>
@@ -43,8 +42,10 @@ function Index(props) {
                 <Form.Control
                   size="md"
                   type="search"
-                  placeholder="Amazon Product URL"
-                  className=" product-search mr-2"
+                  placeholder="Amazon Product URL`
+                  className="
+                  product-search
+                  mr-2
                   onChange={handleInputChange}
                 />
                 <Button onClick={handleSearch} variant="outline-primary">
@@ -63,8 +64,11 @@ function Index(props) {
           <CardDeck>
             <Card className="info-card">
               <Card.Body>
-                {/* Icon to be added */}
-                <Card.Title>Step 1</Card.Title>
+                <i className="fas fa-search fa-2x m-2 mb-3" />
+                <Card.Title>
+                  {' '}
+                  <strong>Step 1</strong>
+                </Card.Title>
                 <Card.Text>
                   Find the desired product on Amazon Copy the Amazon product
                   item URL into the Stockify search bar
@@ -73,7 +77,7 @@ function Index(props) {
             </Card>
             <Card className="info-card">
               <Card.Body>
-                {/* Icon to be added */}
+                <i className="fas fa-cart-arrow-down fa-2x m-2 mb-3" />
                 <Card.Title>Step 2</Card.Title>
                 <Card.Text>
                   Save the product to your Saved Products page Select your
@@ -83,7 +87,7 @@ function Index(props) {
             </Card>
             <Card className="info-card">
               <Card.Body>
-                {/* Icon to be added */}
+                <i class="far fa-smile fa-2x m-2 mb-3"></i>
                 <Card.Title>Step 3</Card.Title>
                 <Card.Text>
                   We will watch the product for you and email you when the
