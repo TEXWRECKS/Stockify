@@ -1,8 +1,16 @@
 .App {
   text-align: center;
 }
-/* Navbar */
 
+/* Begin Navbar Section*/
+
+/* Navbar bar */
+.navbar {
+  background-color: #131921;
+  /* color: white; */
+}
+
+/* Stockify Title */
 .navbar-brand {
   font-weight: bolder;
   font-style: italic;
@@ -10,17 +18,26 @@
   font-family: 'Poppins', sans-serif;
 }
 
-nav .navbar-nav li a {
-  color: white !important;
+/* Login / Logout button */
+.nav-item {
+  border: 2px solid white;
 }
-.navbar-nav {
+
+.nav-item:hover {
+  background-color: #f19276;
   color: white;
 }
 
-.navbar {
-  background-color: #131921;
+/* nav .navbar-nav li a {
+  color: white !important;
+} */
+
+/* .navbar-nav {
   color: white;
-}
+} */
+
+
+/* End Navbar Section */
 
 /* /* Index page */
 

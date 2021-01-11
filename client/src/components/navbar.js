@@ -19,7 +19,7 @@ function Navbar() {
       </Link>
       <div>
         <ul className="navbar-nav">
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <Link
               to="/"
               className={
@@ -31,8 +31,8 @@ function Navbar() {
             >
               Home
             </Link>
-          </li>
-          <li className="nav-item">
+          </li> */}
+          <li className="nav-item ">
             {isAuthenticated ?
             <LogoutButton />
             :
