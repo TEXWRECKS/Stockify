@@ -225,3 +225,7 @@ nav .navbar-nav li a {
 .center {
   align-items: center;
 }
+
+.icon {
+  width: 100px;
+}

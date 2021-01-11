@@ -48,7 +48,7 @@ function SavedProduct() {
               </Row>
 
               <Row>
-                <Col className="mb-5 center" md={4}>
+                <Col className="mb-5 center description" md={4}>
                   <Button variant="primary" className="view-btn">
                     View Product
                   </Button>
