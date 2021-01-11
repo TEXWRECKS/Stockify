@@ -18,23 +18,30 @@
   font-family: 'Poppins', sans-serif;
 }
 
+/* Sign in prompt */
+.nav-text {
+  margin-left: 15px;
+  margin-top: 5px;
+  margin-right: 15px;
+  color: #00bfff;
+}
+
 /* Login / Logout button */
 .nav-item {
+  margin: auto;
   border: 2px solid white;
+  vertical-align: center;
 }
 
 .nav-item:hover {
   background-color: #f19276;
-  color: white;
 }
+
 
 /* nav .navbar-nav li a {
   color: white !important;
 } */
 
-/* .navbar-nav {
-  color: white;
-} */
 
 
 /* End Navbar Section */

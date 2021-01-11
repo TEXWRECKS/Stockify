@@ -14,32 +14,26 @@ function Navbar() {
 
   return (
     <nav className="navbar navbar-expand-lg  ">
+      <div>
       <Link className="navbar-brand" to="/">
         Stockify
       </Link>
+      </div>
       <div>
-        <ul className="navbar-nav">
-          {/* <li className="nav-item">
-            <Link
-              to="/"
-              className={
-                window.location.pathname === '/' ||
-                window.location.pathname === '/home'
-                  ? 'nav-link active'
-                  : 'nav-link'
-              }
-            >
-              Home
-            </Link>
-          </li> */}
-          <li className="nav-item ">
-            {isAuthenticated ?
-            <LogoutButton />
-            :
-            <LoginButton />
-            }
-          </li>
-        </ul>
+        {/* Login Prompt Text */}
+        <h5 className="nav-text">
+          Sign Up or Log In to save products to your Saved Products list, and to set notification preferences!
+        </h5>
+      </div>
+      <div>
+        {/* Login/Logout Button */}
+        <div className="nav-item ">
+          {isAuthenticated ?
+          <LogoutButton />
+          :
+          <LoginButton />
+          }
+        </div>
       </div>
     </nav>
   );
