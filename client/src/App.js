@@ -3,10 +3,10 @@ import './components/Icons';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import Index from './pages/index';
-import Products from './pages/products';
+import Products from './pages/savedproducts';
 import Navbar from './components/Navbar';
 import ProductCard from './components/Product';
-import SavedProducts from './components/SavedProducts';
+import SavedProducts from './pages/savedproducts';
 import Spinner from './components/Spinner';
 import API from './utils/API'
 
@@ -57,6 +57,7 @@ function App() {
   function getUsersSavedItems(){
     API.getUsersSavedItems("smrodriguez88@gmail.com").then(res =>{
       console.log(`User saved item data retrieved ${JSON.stringify(res.data)}`)
+      setSavedProducts({productData: null})
       setSavedProducts({productData: res.data})
     });
   };
@@ -77,9 +78,9 @@ function App() {
         {product.itemTitle != null && 
           <ProductCard item={product} updateProductState={updateProductState} clearProductState={clearProductState} readProductState={readProductState} getUsersSavedItems={getUsersSavedItems}/>
         }
-        {savedProducts.productData && savedProducts.productData.map((savedProduct) =>
-          <SavedProducts savedProduct={savedProduct}/>
-        )}
+        {savedProducts.productData != null && 
+          <SavedProducts savedProducts={savedProducts}/>
+        }
         
       </div>
     </Router>

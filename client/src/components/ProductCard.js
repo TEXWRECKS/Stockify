@@ -5,10 +5,6 @@ import Lego from '../assets/images/lego.jpg';
 
 function savedProduct(props) {
   return (
-    <div>
-      <Container classname="product-container">
-        <h1 className="product-saved-heading">All Saved Products</h1>
-
         <Card>
           <Card.Header>
             <strong style={{ color: 'green' }}>{props.savedProduct.itemStatus}</strong>
@@ -37,8 +33,6 @@ function savedProduct(props) {
             </Row>
           </Card.Body>
         </Card>
-      </Container>
-    </div>
   );
 }
 
