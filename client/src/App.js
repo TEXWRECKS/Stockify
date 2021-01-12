@@ -5,7 +5,7 @@ import './App.css';
 import Index from './pages/Index';
 import Products from './pages/Products';
 import Navbar from './components/Navbar';
-import ProductCard from './components/Product';
+import ProductCard from './components/Product.js';
 import SavedProducts from './components/SavedProducts';
 import Spinner from './components/Spinner';
 
