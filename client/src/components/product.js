@@ -25,8 +25,6 @@ function Product(props) {
   // Question 1 "No" onclick function
   const question1No = (event) => {
     event.preventDefault();
-    // *** NEED to write code that will save the url that was searched, in case the user presses "Back" in the 404 option provided to them...
-    // ... if they click this "No" button
     console.log('No has been clicked');
     props.clearProductState();
     // setting the counter to 404 to prompt user to check their url entry and try again, or to return to the product page
