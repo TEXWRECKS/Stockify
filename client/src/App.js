@@ -35,7 +35,7 @@ function App() {
     });
   };
 
-  function clearProductState(){
+  function clearProductState() {
     setProduct({
       itemTitle: null,
       itemUrl: null,
@@ -46,7 +46,7 @@ function App() {
     });
   };
 
-  function readProductState(){
+  function readProductState() {
     return product;
   };
 
@@ -70,7 +70,17 @@ function App() {
     <Router>
       <Navbar />
       <div>
-        <Route exact path="/" render={() => (<Index updateProductState={updateProductState} clearProductState={clearProductState} updateIsLoadingState={updateIsLoadingState}/>)} />
+        <Route
+          exact
+          path="/"
+          render={() => (
+            <Index
+              updateProductState={updateProductState}
+              clearProductState={clearProductState}
+              updateIsLoadingState={updateIsLoadingState}
+            />
+          )}
+        />
         <Route exact path="/products" component={Products} />
         {isLoading == true &&
         <Spinner />

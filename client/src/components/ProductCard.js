@@ -1,7 +1,8 @@
 import React from 'react';
 import '../App.css';
 import { Card, Container, Row, Col, Button } from 'react-bootstrap';
-import Lego from '../assets/images/lego.jpg';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 function savedProduct(props) {
   return (
