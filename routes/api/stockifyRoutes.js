@@ -1,5 +1,5 @@
-const {getItem, saveItem} = require('../../controllers/AmazonController.js')
-
+const {getItem, saveItem} = require('../../controllers/AmazonController')
+const {getUsersSavedItems} = require('../../controllers/UserProductController')
 const router = require("express").Router();
 const db = require("../../models");
 
@@ -21,14 +21,21 @@ router.post("/getItem", async (req, res) => {
     url = req.body.params.url
     item = await getItem(url)
     console.log(item);
-    res.json(item);
+    res.status(200).json(item);
 });
 
 router.post("/saveItem", async (req, res) => {
     // reads the url field from the body of the message sent by the front end
     console.log(`[stockifyRoutes] (saveItem) : Data recieved from front-end ${JSON.stringify(req.body)}`)
     saveitem = await saveItem("smrodriguez88@gmail.com", item)
-    res.json(true);
+    res.status(200).json(true);
+});
+
+router.post("/getUsersSavedItems", async (req, res) => {
+    // reads the username sent from the front-end to retrieve the users saved items
+    console.log(`[stockifyRoutes] (getUsersSavedItems) : Retrieving items for user ${req.body.params.user}`)
+    saveitem = await getUsersSavedItems(req.body.params.user)
+    res.status(200).json(saveitem);
 });
 
 module.exports = router;
