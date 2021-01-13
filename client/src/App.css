@@ -23,26 +23,24 @@
   margin-left: 15px;
   margin-top: 5px;
   margin-right: 15px;
-  color: #00bfff;
 }
 
 /* Login / Logout button */
 .nav-item {
   margin: auto;
-  border: 2px solid white;
+  float: right;
   vertical-align: center;
+  color: white;
 }
 
-.nav-item:hover {
-  background-color: #f19276;
+.nav-right {
+  float: right;
+  color: white;
 }
-
 
 /* nav .navbar-nav li a {
   color: white !important;
 } */
-
-
 
 /* End Navbar Section */
 
@@ -252,4 +250,21 @@
 
 .icon {
   width: 100px;
+  color: #232f3e;
+}
+
+.fa-search,
+.fa-cart-arrow-down,
+.fa-smile {
+  color: #232f3e;
+}
+
+.banner-title {
+  font-size: 50px;
+}
+
+/* saved card Delete & Update */
+
+.btn-delete {
+  max-height: 35px;
 }
