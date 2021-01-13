@@ -13,7 +13,7 @@ function Product(props) {
     event.preventDefault()
     let item = props.readProductState()
     console.log()
-    API.saveItem(item).then(res =>{
+    API.saveUserItem(item).then(res =>{
       console.log(res)
     }).catch(err => console.log(err))
     props.clearProductState();
