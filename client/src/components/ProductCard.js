@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../App.css';
-import { Card, Container, Row, Col, Button } from 'react-bootstrap';
+import { Card, Container, Row, Col, Button, Form } from 'react-bootstrap';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -46,7 +46,7 @@ function SavedProduct(props) {
               for <strong>below!</strong>
             </Col>
             <Button variant="danger" className="btn-delete">
-              X
+              <i class="fa fa-times" aria-hidden="true"></i>
             </Button>
           </Row>
 
@@ -55,7 +55,7 @@ function SavedProduct(props) {
               <Button variant="primary" className="view-btn">
                 View Product
               </Button>
-              <Button variant="light" className="view-btn mr-5">
+              <Button variant="light" className="view-btn ml-3">
                 Update Product
               </Button>
             </Col>
@@ -74,6 +74,7 @@ function SavedProduct(props) {
                 <ToggleButton
                   className="p-check btn- btn-secondary active"
                   type="checkbox"
+                  onClick={Form}
                   checked={priceChecked.checked}
                   value="1"
                   onChange={(e) =>
