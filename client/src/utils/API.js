@@ -24,4 +24,12 @@ export default {
         }
     });
   },
+  getUsersSavedItems: function(user) {
+    console.log(`[utils/API] [getUsersSavedItems] - Retrieving saved items for user ${JSON.stringify(user)}`)
+    return axios.post("api/getUsersSavedItems", {
+        params: {
+            user : user,
+        }
+    });
+  },
 };

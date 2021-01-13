@@ -10,14 +10,14 @@ function Product(props) {
   // counter===0 question/button set event listener functions
   // Question 1 "Yes" onclick function
   const question1Yes = (event) => {
-    event.preventDefault();
-    let item = props.readProductState();
-    console.log();
-    API.saveItem(item)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => console.log(err));
+    event.preventDefault()
+    let item = props.readProductState()
+    console.log()
+    API.saveItem(item).then(res =>{
+      console.log(res)
+    }).catch(err => console.log(err))
+    props.clearProductState();
+    props.getUsersSavedItems();
     // changing counter to 1, to present the statement
     setCounter(1);
   };
