@@ -1,5 +1,10 @@
 const nightmare = require('nightmare')()
 const db = require("../models");
+const SignUpEmail = require("./AccountCreationEmail");
+const SaveProductEmail = require("./SaveProductEmail");
+const PriceEmail = require("./PriceChangeEmail");
+const AvailabilityEmail = require("./AvailabilityChangeEmail");
+const DeleteEmail = require("./DeleteProductEmail");
 // const mongoose = require("mongoose");  // UNCOMMENT THIS TO TEST
 
 // getItem takes in a URL and parses it for item information 
@@ -38,6 +43,7 @@ async function saveItem(user, item){
             itemPriceAlert: item.itemPriceAlert,
     })
     record.save()
+    SaveProductEmail(user, item);
     console.log(`[AmazonController] (saveItem) - ${item.title} Saved to DB for ${user}`)
 }).catch(err => console.error(err))
 };
