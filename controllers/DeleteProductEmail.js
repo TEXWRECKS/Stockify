@@ -1,7 +1,7 @@
 // requiring nodemailer
 const nodemailer = require('nodemailer');
 
-function sendDeleteProductMail(user, pass, to, item, alertType){
+function sendDeleteProductMail(to, item){
     // transport service to send emails for nodemailer
     const transporter = nodemailer.createTransport({
         // using gmail as transport service
@@ -9,8 +9,8 @@ function sendDeleteProductMail(user, pass, to, item, alertType){
         // auth object specifying email and password of gmail, which...
         // ... allows nodemailer to login and send email using gmail account
         auth: {
-            user: user,
-            pass: pass
+            user: process.env.user,
+            pass: process.env.pass
         }
     });
 

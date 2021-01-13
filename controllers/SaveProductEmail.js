@@ -1,7 +1,7 @@
 // requiring nodemailer
 const nodemailer = require('nodemailer');
 
-function sendSavedProductMail(user, pass, to, item, alertType){
+function sendSavedProductMail(to, item){
     // transport service to send emails for nodemailer
     const transporter = nodemailer.createTransport({
         // using gmail as transport service
@@ -9,8 +9,8 @@ function sendSavedProductMail(user, pass, to, item, alertType){
         // auth object specifying email and password of gmail, which...
         // ... allows nodemailer to login and send email using gmail account
         auth: {
-            user: user,
-            pass: pass
+            user: process.env.user,
+            pass: process.env.pass
         }
     });
 
@@ -29,5 +29,6 @@ function sendSavedProductMail(user, pass, to, item, alertType){
             console.log(info);
     });
 };
+
 
 module.exports = {sendSavedProductMail};
