@@ -250,4 +250,21 @@
 
 .icon {
   width: 100px;
+  color: #232f3e;
+}
+
+.fa-search,
+.fa-cart-arrow-down,
+.fa-smile {
+  color: #232f3e;
+}
+
+.banner-title {
+  font-size: 50px;
+}
+
+/* saved card Delete & Update */
+
+.btn-delete {
+  max-height: 10px;
 }
