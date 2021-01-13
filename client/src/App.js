@@ -1,19 +1,19 @@
 import React, { useState, useEffect, useReducer } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
-import Index from './pages/index';
+import Index from './pages/Index';
 import Products from './pages/savedproducts';
 import Navbar from './components/Navbar';
 import ProductCard from './components/Product';
 import SavedProducts from './pages/savedproducts';
 import Spinner from './components/Spinner';
-import API from './utils/API'
+import API from './utils/API';
 
 function App() {
   const [theme, setTheme] = useState('light');
   const [isLoading, setIsLoading] = useState({});
   const [savedProducts, setSavedProducts] = useState({
-    productData: null
+    productData: null,
   });
   const [product, setProduct] = useState({
     itemTitle: null,
@@ -32,7 +32,7 @@ function App() {
       itemPrice: item.data.price,
       itemStatus: item.data.availability,
     });
-  };
+  }
 
   function clearProductState() {
     setProduct({
@@ -43,27 +43,27 @@ function App() {
       itemStatus: null,
       itemPriceAlert: null,
     });
-  };
+  }
 
   function readProductState() {
     return product;
-  };
+  }
 
-  function updateIsLoadingState(bool){
+  function updateIsLoadingState(bool) {
     setIsLoading(bool);
-  };
+  }
 
-  function getUsersSavedItems(){
-    API.getUsersSavedItems("smrodriguez88@gmail.com").then(res =>{
-      console.log(`User saved item data retrieved ${JSON.stringify(res.data)}`)
-      setSavedProducts({productData: null})
-      setSavedProducts({productData: res.data})
+  function getUsersSavedItems() {
+    API.getUsersSavedItems('smrodriguez88@gmail.com').then((res) => {
+      console.log(`User saved item data retrieved ${JSON.stringify(res.data)}`);
+      setSavedProducts({ productData: null });
+      setSavedProducts({ productData: res.data });
     });
-  };
+  }
 
   useEffect(() => {
-    getUsersSavedItems()
-},[]);
+    getUsersSavedItems();
+  }, []);
 
   return (
     <Router>
@@ -81,16 +81,19 @@ function App() {
           )}
         />
         <Route exact path="/products" component={Products} />
-        {isLoading == true &&
-        <Spinner />
-        }
-        {product.itemTitle != null && 
-          <ProductCard item={product} updateProductState={updateProductState} clearProductState={clearProductState} readProductState={readProductState} getUsersSavedItems={getUsersSavedItems}/>
-        }
-        {savedProducts.productData != null && 
-          <SavedProducts savedProducts={savedProducts}/>
-        }
-        
+        {isLoading == true && <Spinner />}
+        {product.itemTitle != null && (
+          <ProductCard
+            item={product}
+            updateProductState={updateProductState}
+            clearProductState={clearProductState}
+            readProductState={readProductState}
+            getUsersSavedItems={getUsersSavedItems}
+          />
+        )}
+        {savedProducts.productData != null && (
+          <SavedProducts savedProducts={savedProducts} />
+        )}
       </div>
     </Router>
   );

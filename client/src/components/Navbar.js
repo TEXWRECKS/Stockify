@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../App.css';
 import { useAuth0 } from '@auth0/auth0-react';
-
+import { Button } from 'react-bootstrap';
 import LogoutButton from './LogoutButton';
 import LoginButton from './LoginButton';
 
@@ -17,16 +17,10 @@ function Navbar() {
           Stockify
         </Link>
       </div>
-      <div>
-        {/* Login Prompt Text */}
-        <h5 className="nav-text">
-          Sign Up or Log In to save products to your Saved Products list, and to
-          set notification preferences!
-        </h5>
-      </div>
+
       <div>
         {/* Login/Logout Button */}
-        <div className="nav-item ">
+        <div className="nav-item navbar-right ">
           {isAuthenticated ? <LogoutButton /> : <LoginButton />}
         </div>
       </div>
