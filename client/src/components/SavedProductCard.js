@@ -27,7 +27,7 @@ function SavedProductCard(props) {
         <strong style={{ color: 'green' }}>
           {props.savedProduct.itemStatus}
         </strong>
-        <Button variant="danger" className="btn-delete">
+        <Button variant="danger" className="btn-delete" identify={props.savedProduct._id} onClick={handleDeleteClick}>
           <i className="fa fa-times" aria-hidden="true"></i>
         </Button>
       </Card.Header>
@@ -56,9 +56,6 @@ function SavedProductCard(props) {
               Click the toggles for any which you want to receive notifications
               for <strong>below!</strong>
             </Col>
-            <Button variant="danger" className="btn-delete" identify={props.savedProduct._id} onClick={handleDeleteClick}>
-              <i className="fa fa-times" aria-hidden="true"></i>
-            </Button>
           </Row>
           <br></br>
           <Row>
