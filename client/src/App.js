@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer } from 'react';
+import React, { useState, useEffect, usePrevious } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import Index from './pages/index';
@@ -60,9 +60,10 @@ function App() {
 
   function getUsersSavedItems(){
     if (isAuthenticated){
-    API.getUsersSavedItems(user.email).then(res =>{
-      console.log(`User saved item data retrieved ${JSON.stringify(res.data)}`)
-      setSavedProducts({productData: res.data})
+      console.log(`Obtaining saved items for user ${JSON.stringify(user.email)}`)
+      API.getUsersSavedItems(user.email).then(res =>{
+        console.log(`User saved item data retrieved ${JSON.stringify(res.data)}`)
+        setSavedProducts({productData: res.data})
     });
   };
   };
@@ -77,8 +78,9 @@ function App() {
 
 
   useEffect(() => {
-    getUsersSavedItems();
-  }, []);
+    if (isAuthenticated){
+        getUsersSavedItems();
+  }}, []);
 
   return (
     <Router>

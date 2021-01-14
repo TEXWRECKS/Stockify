@@ -17,7 +17,10 @@ async function getUsersSavedItems(user){
 // saveUserItem saves the item information under the specified username (email address)
 async function saveUserItem(user, item){
     console.log(`[UserProductController] (saveUserItem) - Checking for user existence ${JSON.stringify(user.email)}`)
-    if (!db.User.findOne({email: user.email}).limit(1).length === 1)
+    validateUser = await db.User.countDocuments({email: user.email})
+    console.log(validateUser)
+    console.log(typeof(validateUser))
+    if (validateUser < 1)
         console.log(`[UserProductController] (saveUserItem) - ${JSON.stringify(user.email)} Not Found, creating user`)
         await db.User.create({
             email: user.email,
