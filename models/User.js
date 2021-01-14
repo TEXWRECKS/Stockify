@@ -8,7 +8,9 @@ const itemSchema = new Schema({
     itemImage: String, // URL of image
     itemPrice: Number,  // latest item price
     itemStatus: String,  // current status: in-stock or out-of-stock
-    itemPriceAlert: Number,  // price to alert at
+    itemPriceAlert: Boolean,  // set to alert on item price
+    itemPriceThreshold: Number, // set threshold price to alert at
+    itemAvailabilityAlert: Boolean, // set to alert on item availability
 })
 
 const userSchema = new Schema({

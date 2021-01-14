@@ -1,13 +1,7 @@
 const nightmare = require('nightmare')()
-const db = require("../models");
-const SignUpEmail = require("./AccountCreationEmail");
-const SaveProductEmail = require("./SaveProductEmail");
-const PriceEmail = require("./PriceChangeEmail");
-const AvailabilityEmail = require("./AvailabilityChangeEmail");
-const DeleteEmail = require("./DeleteProductEmail");
-// const mongoose = require("mongoose");  // UNCOMMENT THIS TO TEST
+// const mongoose = require("mongoose");
 
-// getItem takes in a URL and parses it for item information 
+
 async function getItem(url){
     console.log(`Item URL being scraped by nightmare ${url}`)
     const item = await nightmare.goto(url)
@@ -29,41 +23,7 @@ async function getItem(url){
     return item
 }
 
-// saveItem saves the item information under the specified username (email address)
-async function saveItem(user, item){
-    console.log(`[AmazonController] (saveItem) - recieved item: ${JSON.stringify(item)} for user: ${JSON.stringify(user)}`)
-    db.User.findOne({email: user})
-    .then(function(record){
-        record.userItems.push({
-            itemTitle: item.title,
-            itemUrl: item.url,
-            itemImage: item.image,
-            itemPrice: item.price,
-            itemStatus: item.availability,
-            itemPriceAlert: item.itemPriceAlert,
-    })
-    record.save()
-    SaveProductEmail(user, item);
-    console.log(`[AmazonController] (saveItem) - ${item.title} Saved to DB for ${user}`)
-}).catch(err => console.error(err))
-};
+// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/stockify_db", { useNewUrlParser: true, useUnifiedTopology: true });
+// deleteItem("smrodriguez88@gmail.com", {'title': 'Test Product', 'url': 'https://test.com/item', 'image': 'https://imgur.com/gallery/CNhtJan', 'price':'$3.50', 'availability':'In-Stock', 'itemPriceAlert': false})
 
-
-module.exports = {getItem, saveItem};
-
-// Lego Bugatti - https://www.amazon.com/gp/product/B07C8L9CRJ/ref=ox_sc_saved_title_4?smid=A2TF0EOVMPEXJK&psc=1
-// Lego Stranger Things - https://www.amazon.com/gp/product/B07Q2WMBLR/ref=ox_sc_saved_title_7?smid=ATVPDKIKX0DER&psc=1
-// getItem("https://www.amazon.com/gp/product/B07Q2WMBLR/")
-// getItem("https://www.amazon.com/Ryobi-P737-Portable-Cordless-Inflator/dp/B017JIWT9U/")
-// getItem("https://www.amazon.com/RYOBI-P717-P163-Spotlight-Automotive-Lithium-Ion/dp/B088PBKNGS/")
-// getItem("https://www.amazon.com/gp/product/B01LWK88EO/")
-
-// UNCOMMENT THIS TO TEST
-// async function test(){
-//     mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/stockify_db", { useNewUrlParser: true, useUnifiedTopology: true });
-//     item = await getItem("https://www.amazon.com/gp/product/B0050JRZR2/")
-//     await saveItem("smrodriguez88@gmail.com", item)
-//     return true
-// }
-
-// test()
+module.exports = {getItem};
