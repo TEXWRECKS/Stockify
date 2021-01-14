@@ -59,11 +59,13 @@ function App() {
   }
 
   function getUsersSavedItems(){
-    API.getUsersSavedItems("smrodriguez88@gmail.com").then(res =>{
+    if (isAuthenticated){
+    API.getUsersSavedItems(user.email).then(res =>{
       console.log(`User saved item data retrieved ${JSON.stringify(res.data)}`)
       setSavedProducts({productData: res.data})
     });
-  }
+  };
+  };
 
   function displaySavedProducts(){
     if(savedProducts.productData){

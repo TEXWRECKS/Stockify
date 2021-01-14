@@ -16,39 +16,48 @@ async function getUsersSavedItems(user){
 
 // saveUserItem saves the item information under the specified username (email address)
 async function saveUserItem(user, item){
-    console.log(`[AmazonController] (saveUserItem) - recieved item: ${JSON.stringify(item)} for user: ${JSON.stringify(user)}`)
-    db.User.findOne({email: user})
+    console.log(`[UserProductController] (saveUserItem) - Checking for user existence ${JSON.stringify(user.email)}`)
+    if (!db.User.findOne({email: user.email}).limit(1).length === 1)
+        console.log(`[UserProductController] (saveUserItem) - ${JSON.stringify(user.email)} Not Found, creating user`)
+        await db.User.create({
+            email: user.email,
+            firstName: user.given_name,
+            lastName: user.family_name,
+            }  
+        );
+    console.log(`[UserProductController] (saveUserItem) - recieved item: ${JSON.stringify(item)} for user: ${JSON.stringify(user.email)}`)
+    db.User.findOne({email: user.email})
     .then(function(record){
         record.userItems.push({
-            itemTitle: item.title,
-            itemUrl: item.url,
-            itemImage: item.image,
-            itemPrice: item.price,
-            itemStatus: item.availability,
+            itemTitle: item.itemTitle,
+            itemUrl: item.itemUrl,
+            itemImage: item.itemImage,
+            itemPrice: item.itemPrice,
+            itemStatus: item.itemStatus,
             itemPriceAlert: false,
             itemPriceThreshold: null,
             itemAvailabilityAlert: false
     })
     record.save()
-    console.log(`[AmazonController] (saveUserItem) - ${item.title} Saved to DB for ${user}`)
+    console.log(`[UserProductController] (saveUserItem) - ${JSON.stringify(item.itemTitle)} Saved to DB for ${JSON.stringify(user.email)}`)
 }).catch(err => console.error(err))
 };
 
 
 // deleteUsersSavedItem removes the item by ID for the specified username (email address)
 async function deleteUsersSavedItem(user, item){
-    console.log(`[AmazonController] (deleteItem) - recieved item: ${JSON.stringify(item)} for user: ${JSON.stringify(user)}`)
+    console.log(`[UserProductController] (deleteItem) - recieved item: ${JSON.stringify(item)} for user: ${JSON.stringify(user)}`)
     db.User.findOne({email: user})
     .then(function(record){
         record.userItems.deleteOne({_id: ObjectId(item._id)});
-    console.log(`[AmazonController] (deleteItem) - ${itemId} removed from DB for ${user}`)
+    console.log(`[UserProductController] (deleteItem) - ${itemId} removed from DB for ${user}`)
 }).catch(err => console.error(err))
 };
 
 
 // updateUsersSavedItems removes the item by ID for the specified username (email address)
 async function updateUsersSavedItems(user, item){
-    console.log(`[AmazonController] (updateItem) - updating item: ${JSON.stringify(item)} for user: ${JSON.stringify(user)}`)
+    console.log(`[UserProductController] (updateItem) - updating item: ${JSON.stringify(item)} for user: ${JSON.stringify(user)}`)
     db.User.findOne({email: user})
     .then(function(record){
         record.userItems.updateOne(
@@ -58,7 +67,7 @@ async function updateUsersSavedItems(user, item){
                 itemPriceThreshold: item.itemPriceThreshold, 
                 itemAvailabilityAlert: item.itemAvailabilityAlert}} 
             );
-    console.log(`[AmazonController] (updateItem) - ${itemId} removed from DB for ${user}`)
+    console.log(`[UserProductController] (updateItem) - ${itemId} removed from DB for ${user}`)
 }).catch(err => console.error(err))
 };
 

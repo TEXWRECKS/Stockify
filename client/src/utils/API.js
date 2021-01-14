@@ -11,23 +11,17 @@ export default {
         }
     });
   },
-  saveUserItem: async function(data) {
-    console.log(`[utils/API] [saveUserItem] - Item being saved ${JSON.stringify(data)}`)
+  saveUserItem: async function(user, item) {
+    console.log(`[utils/API] [saveUserItem] - Saving Item ${JSON.stringify(item)} for ${user.email}`)
     return await axios.post("api/saveUserItem", {
         params: {
-            title : data.itemTitle,
-            url : data.itemUrl,
-            image : data.itemImage,
-            price : data.itemPrice,
-            availability : data.itemStatus,
-            itemPriceAlert: data.itemPriceAlert,
-            itemPriceThreshold: data.itemPriceThreshold,
-            itemAvailabilityAlert: data.itemAvailabilityAlert
+          user : user,
+          item : item,
         }
     });
   },
   getUsersSavedItems: async function(user) {
-    console.log(`[utils/API] [getUsersSavedItems] - Retrieving saved items for user ${JSON.stringify(user)}`)
+    console.log(`[utils/API] [getUsersSavedItems] - Retrieving saved items for user ${JSON.stringify(user.email)}`)
     return await axios.post("api/getUsersSavedItems", {
         params: {
             user : user,
@@ -35,7 +29,7 @@ export default {
     });
   },
   deleteUsersSavedItem: async function(user, item) {
-    console.log(`[utils/API] [deleteUsersSavedItem] - Removing saved item ${item.name}for user ${JSON.stringify(user)}`)
+    console.log(`[utils/API] [deleteUsersSavedItem] - Removing saved item ${item.name}for user ${JSON.stringify(user.email)}`)
     return await axios.post("api/deleteUsersSavedItem", {
         params: {
             user : user,
@@ -44,7 +38,7 @@ export default {
     });
   },
   updateUsersSavedItems: async function(user, item) {
-    console.log(`[utils/API] [updateUsersSavedItems] - Update saved item ${item.name} for user ${JSON.stringify(user)}`)
+    console.log(`[utils/API] [updateUsersSavedItems] - Update saved item ${item.name} for user ${JSON.stringify(user.email)}`)
     return await axios.post("api/updateUsersSavedItems", {
         params: {
             user : user,
