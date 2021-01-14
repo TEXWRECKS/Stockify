@@ -17,7 +17,7 @@ function NewProductCard(props) {
       console.log(res)
       props.clearProductState();
       // Needed to delay fetching the users saved items as the fetch would happen before the item could save to the DB
-      setTimeout(() => {props.getUsersSavedItems(); }, 2000)
+      setTimeout(() => {props.getUsersSavedItems(); }, 1000)
     }).catch(err => console.log(err))
   };
 

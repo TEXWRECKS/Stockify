@@ -16,10 +16,10 @@ function SavedProductCard(props) {
 
     function handleDeleteClick(event) {
       console.log(event)
-      let item_id = event.target.attributes.identify.nodeValue
+      let item_id = event.target.getAttribute("identify")
       API.deleteUsersSavedItem(props.user.email, item_id)
-      props.getUsersSavedItems(props.user.email)
-    }
+      setTimeout(() => {props.getUsersSavedItems(); }, 2000)
+      }
 
   return (
     <Card className="mb-5">
