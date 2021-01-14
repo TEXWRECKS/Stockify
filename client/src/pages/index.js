@@ -43,12 +43,8 @@ function Index(props) {
                 <Form.Control
                   size="md"
                   type="search"
-                  className="product-search
-                  mr-2"
                   placeholder="Amazon Product URL"
-                  className="
-                  product-search
-                  mr-2"
+                  className="product-search mr-2"
                   onChange={handleInputChange}
                 />
                 <Button onClick={handleSearch} variant="outline-primary">
@@ -93,9 +89,8 @@ function Index(props) {
             </Card>
             <Card className="info-card">
               <Card.Body>
-                <i class="far fa-smile fa-2x m-2 mb-3"></i>
-                <Card.Title className="banner-title">
-                  {' '}
+                <i className="far fa-smile fa-2x m-2 mb-3"></i>
+                <Card.Title>{' '}
                   <strong>Step 3</strong>
                 </Card.Title>
                 <Card.Text>

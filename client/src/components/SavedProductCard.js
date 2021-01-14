@@ -5,16 +5,15 @@ import ToggleButton from 'react-bootstrap/ToggleButton';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function SavedProduct(props) {
-  // Price Change toggle button variable for setting state
-  const [priceChecked, setPriceChecked] = useState({ checked: false });
-  // Avialability Change toggle button variable for setting state
-  const [availabilityChecked, setAvailabilityChecked] = useState({
-    available: false,
-  });
+
+function SavedProductCard(props) {
+    // Price Change toggle button variable for setting state
+    const [priceChecked, setPriceChecked] = useState({checked: false});
+    // Avialability Change toggle button variable for setting state
+    const [availabilityChecked, setAvailabilityChecked] = useState({available: false});
 
   return (
-    <Card>
+    <Card className="mb-5">
       <Card.Header>
         <strong style={{ color: 'green' }}>
           {props.savedProduct.itemStatus}
@@ -46,7 +45,7 @@ function SavedProduct(props) {
               for <strong>below!</strong>
             </Col>
             <Button variant="danger" className="btn-delete">
-              <i class="fa fa-times" aria-hidden="true"></i>
+              <i className="fa fa-times" aria-hidden="true"></i>
             </Button>
           </Row>
 
@@ -72,9 +71,9 @@ function SavedProduct(props) {
             <Col className="notification-preference md-4">
               <ButtonGroup toggle className="m-2">
                 <ToggleButton
-                  className="p-check btn- btn-secondary active"
+                  className="p-check btn btn-secondary active"
                   type="checkbox"
-                  onClick={Form}
+                  // onClick={}
                   checked={priceChecked.checked}
                   value="1"
                   onChange={(e) =>
@@ -105,6 +104,6 @@ function SavedProduct(props) {
       </Card.Body>
     </Card>
   );
-}
+};
 
-export default SavedProduct;
+export default SavedProductCard;

@@ -1,13 +1,13 @@
-import React, { useState, useEffect, useReducer } from 'react';
+import React, { useState, useEffect, usePrevious } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
-import Index from './pages/Index';
-import Products from './pages/savedproducts';
+import Index from './pages/index';
 import Navbar from './components/Navbar';
-import ProductCard from './components/Product';
+import NewProductCard from './components/NewProductCard';
 import SavedProducts from './pages/savedproducts';
 import Spinner from './components/Spinner';
-import API from './utils/API';
+import API from './utils/API'
+import { useAuth0 } from '@auth0/auth0-react';
 
 function App() {
   const [theme, setTheme] = useState('light');
@@ -15,6 +15,7 @@ function App() {
   const [savedProducts, setSavedProducts] = useState({
     productData: null,
   });
+  const { user, isAuthenticated } = useAuth0();
   const [product, setProduct] = useState({
     itemTitle: null,
     itemUrl: null,
@@ -22,6 +23,8 @@ function App() {
     itemPrice: null,
     itemStatus: null,
     itemPriceAlert: null,
+    itemPriceThreshold: null,
+    itemAvailabilityAlert: null
   });
 
   function updateProductState(item) {
@@ -42,6 +45,8 @@ function App() {
       itemPrice: null,
       itemStatus: null,
       itemPriceAlert: null,
+      itemPriceThreshold: null,
+      itemAvailabilityAlert: null
     });
   }
 
@@ -53,20 +58,33 @@ function App() {
     setIsLoading(bool);
   }
 
-  function getUsersSavedItems() {
-    API.getUsersSavedItems('smrodriguez88@gmail.com').then((res) => {
-      console.log(`User saved item data retrieved ${JSON.stringify(res.data)}`);
-      setSavedProducts({ productData: null });
-      setSavedProducts({ productData: res.data });
+  function getUsersSavedItems(){
+    if (isAuthenticated){
+      console.log(`Obtaining saved items for user ${JSON.stringify(user.email)}`)
+      API.getUsersSavedItems(user.email).then(res =>{
+        console.log(`User saved item data retrieved ${JSON.stringify(res.data)}`)
+        setSavedProducts({productData: res.data})
     });
-  }
+  };
+  };
+
+  function displaySavedProducts(){
+    if(savedProducts.productData){
+      return (<SavedProducts savedProducts={savedProducts}/>)
+    } else {
+      return (<div className="text-center"><h1>No Products Saved</h1></div>)
+    }
+  };
+
 
   useEffect(() => {
-    getUsersSavedItems();
-  }, []);
+    if (isAuthenticated){
+        getUsersSavedItems();
+  }}, []);
 
   return (
     <Router>
+     {console.log({user})}
       <Navbar />
       <div>
         <Route
@@ -80,20 +98,22 @@ function App() {
             />
           )}
         />
-        <Route exact path="/products" component={Products} />
-        {isLoading == true && <Spinner />}
-        {product.itemTitle != null && (
-          <ProductCard
-            item={product}
-            updateProductState={updateProductState}
-            clearProductState={clearProductState}
-            readProductState={readProductState}
-            getUsersSavedItems={getUsersSavedItems}
-          />
-        )}
-        {savedProducts.productData != null && (
-          <SavedProducts savedProducts={savedProducts} />
-        )}
+          {isLoading == true && <Spinner />}
+          {product.itemTitle && 
+            <NewProductCard 
+              item={product} 
+              updateProductState={updateProductState} 
+              clearProductState={clearProductState} 
+              readProductState={readProductState} 
+              getUsersSavedItems={getUsersSavedItems}
+              />
+          }
+
+          {isAuthenticated ?
+            displaySavedProducts() :
+            <div className="text-center"><h1>Please LOGIN to Save & View Your Products</h1></div>
+          }
+          
       </div>
     </Router>
   );

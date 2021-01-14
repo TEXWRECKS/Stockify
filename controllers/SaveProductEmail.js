@@ -19,7 +19,7 @@ function sendSavedProductMail(to, item){
         from: 'stockify.notifications@gmail.com', // sender address
         to: to, // list of receivers
         subject: '[Stockify] Alert: Product Saved!', // Subject line
-        html: `<p>Your product ${item.name} has successfully been saved to your Saved Products list!  Don't forget to go to your Saved Products and select your product notification preferences.</p>` // plain text body
+        html: `<p>Your product ${item.itemTitle} has successfully been saved to your Saved Products list!  Don't forget to go to your Saved Products and select your product notification preferences.</p>` // plain text body
     }
 
     transporter.sendMail(mailOptions, (err, info) => {

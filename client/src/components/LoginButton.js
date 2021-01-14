@@ -3,13 +3,9 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { Button } from 'react-bootstrap';
 
 const LoginButton = () => {
-  const { loginWithRedirect } = useAuth0();
+  const { loginWithPopup } = useAuth0();
 
-  return (
-    <Button variant="link" onClick={() => loginWithRedirect()}>
-      Log In / Sign Up
-    </Button>
-  );
+  return <Button className="btn-loginout" onClick={() => loginWithPopup()}>Log In</Button>;
 };
 
 export default LoginButton;
