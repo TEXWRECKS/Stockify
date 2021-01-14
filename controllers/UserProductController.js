@@ -1,4 +1,5 @@
 const db = require("../models");
+const {sendSavedProductMail} = require('./SaveProductEmail')
 
 // getUsersSavedItems queries the database to get item information under the specified username (email address)
 async function getUsersSavedItems(user){
@@ -43,6 +44,7 @@ async function saveUserItem(user, item){
     })
     record.save()
     console.log(`[UserProductController] (saveUserItem) - ${JSON.stringify(item.itemTitle)} Saved to DB for ${JSON.stringify(user.email)}`)
+    sendSavedProductMail(user.email, item)
 }).catch(err => console.error(err))
 };
 
