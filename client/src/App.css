@@ -254,4 +254,10 @@
 
 .btn-delete {
   max-height: 35px;
+  float: right;
+}
+
+.text-center {
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
 }
