@@ -28,12 +28,12 @@ export default {
         }
     });
   },
-  deleteUsersSavedItem: async function(user, item) {
-    console.log(`[utils/API] [deleteUsersSavedItem] - Removing saved item ${item.name}for user ${JSON.stringify(user.email)}`)
+  deleteUsersSavedItem: async function(user, id) {
+    console.log(`[utils/API] [deleteUsersSavedItem] - Removing saved item ${id}for user ${JSON.stringify(user.email)}`)
     return await axios.post("api/deleteUsersSavedItem", {
         params: {
             user : user,
-            item : item,
+            id : id,
         }
     });
   },

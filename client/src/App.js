@@ -70,7 +70,7 @@ function App() {
 
   function displaySavedProducts(){
     if(savedProducts.productData){
-      return (<SavedProducts savedProducts={savedProducts}/>)
+      return (<SavedProducts savedProducts={savedProducts} getUsersSavedItems={getUsersSavedItems} user={user}/>)
     } else {
       return (<div className="text-center"><h1>No Products Saved</h1></div>)
     }

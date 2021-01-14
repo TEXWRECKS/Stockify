@@ -4,6 +4,7 @@ import { Card, Container, Row, Col, Button, Form } from 'react-bootstrap';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import API from '../utils/API';
 
 
 function SavedProductCard(props) {
@@ -11,9 +12,18 @@ function SavedProductCard(props) {
     const [priceChecked, setPriceChecked] = useState({checked: false});
     // Avialability Change toggle button variable for setting state
     const [availabilityChecked, setAvailabilityChecked] = useState({available: false});
+    
+
+    function handleDeleteClick(event) {
+      console.log(event)
+      let item_id = event.target.attributes.identify.nodeValue
+      API.deleteUsersSavedItem(props.user.email, item_id)
+      props.getUsersSavedItems(props.user.email)
+    }
 
   return (
     <Card className="mb-5">
+    {console.log(props)}
       <Card.Header>
         <strong style={{ color: 'green' }}>
           {props.savedProduct.itemStatus}
@@ -44,7 +54,7 @@ function SavedProductCard(props) {
               Click the toggles for any which you want to receive notifications
               for <strong>below!</strong>
             </Col>
-            <Button variant="danger" className="btn-delete">
+            <Button variant="danger" className="btn-delete" identify={props.savedProduct._id} onClick={handleDeleteClick}>
               <i className="fa fa-times" aria-hidden="true"></i>
             </Button>
           </Row>

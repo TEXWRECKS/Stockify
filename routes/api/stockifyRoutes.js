@@ -38,16 +38,16 @@ router.post("/getUsersSavedItems", async (req, res) => {
     console.log(`[stockifyRoutes] (getUsersSavedItems) : Retrieving items for user ${req.body.params.user}`)
     user = req.body.params.user
     resp = await getUsersSavedItems(user)
-    res.status(200).json(resp);
+    res.status(200).json(await resp);
 });
 
 router.post("/deleteUsersSavedItem", async (req, res) => {
     // reads the username sent from the front-end to retrieve the users saved items
     console.log(`[stockifyRoutes] (getUsersSavedItems) : Retrieving items for user ${req.body.params.user}`)
     user = req.body.params.user
-    item = req.body.params.item
-    resp = await deleteUsersSavedItem(user, item)
-    res.status(200).json(resp);
+    id = req.body.params.id
+    resp = await deleteUsersSavedItem(user, id)
+    res.status(200).json(await resp);
 });
 
 router.post("/updateUsersSavedItems", async (req, res) => {
@@ -56,7 +56,7 @@ router.post("/updateUsersSavedItems", async (req, res) => {
     user = req.body.params.user
     item = req.body.params.item
     resp = await updateUsersSavedItems(user, item)
-    res.status(200).json(resp);
+    res.status(200).json(await resp);
 });
 
 module.exports = router;

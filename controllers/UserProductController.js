@@ -1,11 +1,12 @@
 const db = require("../models");
 const {sendSavedProductMail} = require('./SaveProductEmail')
+const ObjectId = require('mongodb').ObjectID;
 
 // getUsersSavedItems queries the database to get item information under the specified username (email address)
 async function getUsersSavedItems(user){
     console.log(`[UserProductController] (getUsersSavedItems) - Retrieving items for user ${user}`)
-    usersSavedItems = await db.User.findOne({email:user})
-    console.log(`[UserProductController] (getUsersSavedItems) - Users Saved Items: ${JSON.stringify(usersSavedItems.userItems)}`)
+    usersSavedItems = await db.User.findOne({"email":user})
+    console.log(`[UserProductController] (getUsersSavedItems) - Users saved items retrieved`)
     if (usersSavedItems){
         console.log(`[UserProductController] (getUsersSavedItems) - Found items for ${user}`)
     } else {
@@ -30,7 +31,7 @@ async function saveUserItem(user, item){
             }  
         );
     console.log(`[UserProductController] (saveUserItem) - recieved item: ${JSON.stringify(item)} for user: ${JSON.stringify(user.email)}`)
-    db.User.findOne({email: user.email})
+    await db.User.findOne({"email": user.email})
     .then(function(record){
         record.userItems.push({
             itemTitle: item.itemTitle,
@@ -50,20 +51,19 @@ async function saveUserItem(user, item){
 
 
 // deleteUsersSavedItem removes the item by ID for the specified username (email address)
-async function deleteUsersSavedItem(user, item){
-    console.log(`[UserProductController] (deleteItem) - recieved item: ${JSON.stringify(item)} for user: ${JSON.stringify(user)}`)
-    db.User.findOne({email: user})
-    .then(function(record){
-        record.userItems.deleteOne({_id: ObjectId(item._id)});
-    console.log(`[UserProductController] (deleteItem) - ${itemId} removed from DB for ${user}`)
-}).catch(err => console.error(err))
+async function deleteUsersSavedItem(user, id){
+    console.log(`[UserProductController] (deleteItem) - Removing item: ${JSON.stringify(id)} for user: ${JSON.stringify(user)}`)
+    res = await db.User.updateOne({"email": user}, {$pull: {"userItems": { "_id": ObjectId(id)}}})
+    console.log(res)
+    console.log(`[UserProductController] (deleteItem) - ${id} removed from DB for ${user}`)
+// }).catch(err => console.error(err))
 };
 
 
 // updateUsersSavedItems removes the item by ID for the specified username (email address)
 async function updateUsersSavedItems(user, item){
     console.log(`[UserProductController] (updateItem) - updating item: ${JSON.stringify(item)} for user: ${JSON.stringify(user)}`)
-    db.User.findOne({email: user})
+    await db.User.findOne({email: user})
     .then(function(record){
         record.userItems.updateOne(
             {_id: ObjectId(item._id)},
