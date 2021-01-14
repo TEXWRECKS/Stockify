@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import '../App.css';
 import { Card, Container, Row, Col, Button } from 'react-bootstrap';
 import ToggleButton from 'react-bootstrap/ToggleButton';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import API from '../utils/API';
-
 
 function SavedProductCard(props) {
     // Price Change toggle button variable for setting state
@@ -28,6 +27,9 @@ function SavedProductCard(props) {
         <strong style={{ color: 'green' }}>
           {props.savedProduct.itemStatus}
         </strong>
+        <Button variant="danger" className="btn-delete">
+          <i className="fa fa-times" aria-hidden="true"></i>
+        </Button>
       </Card.Header>
       <Card.Body>
         <Container>
@@ -58,13 +60,13 @@ function SavedProductCard(props) {
               <i className="fa fa-times" aria-hidden="true"></i>
             </Button>
           </Row>
-
+          <br></br>
           <Row>
             <Col className="mb-5 center description md-4">
-              <Button variant="primary" className="view-btn">
+              <Button variant="primary" className="view-btn mr-2">
                 View Product
               </Button>
-              <Button variant="light" className="view-btn ml-3">
+              <Button variant="light" className="view-btn">
                 Update Product
               </Button>
             </Col>
@@ -78,28 +80,30 @@ function SavedProductCard(props) {
                 </strong>
               </Card.Text>
             </Col>
+
             <Col className="notification-preference md-4">
-              <ButtonGroup toggle className="m-2">
+              <ToggleButtonGroup
+                type="checkbox"
+                defaultValue={[1, 2]}
+                className="mb-2 mr-2"
+              >
                 <ToggleButton
-                  className="p-check btn btn-secondary active"
+                  className="p-check btn"
                   type="checkbox"
-                  // onClick={}
                   checked={priceChecked.checked}
-                  value="1"
+                  value={1}
                   onChange={(e) =>
                     setPriceChecked({ checked: e.currentTarget.checked })
                   }
                 >
                   Price Change
                 </ToggleButton>
-              </ButtonGroup>
-              <ButtonGroup toggle className="m-2">
                 <ToggleButton
-                  className="a-check btn- btn-secondary active"
+                  className="a-check btn"
                   type="checkbox"
                   checked={availabilityChecked.available}
-                  value="1"
-                  onChange={(e) =>
+                  value={2}
+                  onChanged={(e) =>
                     setAvailabilityChecked({
                       available: e.currentTarget.checked,
                     })
@@ -107,13 +111,13 @@ function SavedProductCard(props) {
                 >
                   Availability Change
                 </ToggleButton>
-              </ButtonGroup>
+              </ToggleButtonGroup>
             </Col>
           </Row>
         </Container>
       </Card.Body>
     </Card>
   );
-};
+}
 
 export default SavedProductCard;

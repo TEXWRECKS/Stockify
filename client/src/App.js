@@ -6,7 +6,7 @@ import Navbar from './components/Navbar';
 import NewProductCard from './components/NewProductCard';
 import SavedProducts from './pages/savedproducts';
 import Spinner from './components/Spinner';
-import API from './utils/API'
+import API from './utils/API';
 import { useAuth0 } from '@auth0/auth0-react';
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
     itemStatus: null,
     itemPriceAlert: null,
     itemPriceThreshold: null,
-    itemAvailabilityAlert: null
+    itemAvailabilityAlert: null,
   });
 
   function updateProductState(item) {
@@ -45,7 +45,7 @@ function App() {
       itemStatus: null,
       itemPriceAlert: null,
       itemPriceThreshold: null,
-      itemAvailabilityAlert: null
+      itemAvailabilityAlert: null,
     });
   }
 
@@ -57,24 +57,31 @@ function App() {
     setIsLoading(bool);
   }
 
-  function getUsersSavedItems(){
-    if (isAuthenticated){
-      console.log(`Obtaining saved items for user ${JSON.stringify(user.email)}`)
-      API.getUsersSavedItems(user.email).then(res =>{
-        console.log(`User saved item data retrieved ${JSON.stringify(res.data)}`)
-        setSavedProducts({productData: res.data})
-    });
-  };
-  };
+  function getUsersSavedItems() {
+    if (isAuthenticated) {
+      console.log(
+        `Obtaining saved items for user ${JSON.stringify(user.email)}`
+      );
+      API.getUsersSavedItems(user.email).then((res) => {
+        console.log(
+          `User saved item data retrieved ${JSON.stringify(res.data)}`
+        );
+        setSavedProducts({ productData: res.data });
+      });
+    }
+  }
 
   function displaySavedProducts(){
     if(savedProducts.productData){
       return (<SavedProducts savedProducts={savedProducts} getUsersSavedItems={getUsersSavedItems} user={user}/>)
     } else {
-      return (<div className="text-center"><h1>No Products Saved</h1></div>)
+      return (
+        <div className="text-center mb-5">
+          <h2>No Products Saved</h2>
+        </div>
+      );
     }
-  };
-
+  }
 
   useEffect((isAuthenticated, getUsersSavedItems) => {
     if (isAuthenticated){
@@ -83,7 +90,7 @@ function App() {
 
   return (
     <Router>
-     {console.log({user})}
+      {console.log({ user })}
       <Navbar />
       <div>
         <Route
@@ -108,11 +115,19 @@ function App() {
               />
           }
 
-          {isAuthenticated ?
-            displaySavedProducts() :
-            <div className="text-center"><h1>Please LOGIN to Save & View Your Products</h1></div>
-          }
-          
+        {isAuthenticated ? (
+          displaySavedProducts()
+        ) : (
+          <div className="text-center mb-5 mt-5">
+            <h2>
+              {' '}
+              <strong>
+                {' '}
+                Please LOGIN to Save <br />& View Your Products
+              </strong>
+            </h2>
+          </div>
+        )}
       </div>
     </Router>
   );
