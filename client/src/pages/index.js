@@ -3,6 +3,7 @@ import '../App.css';
 import { Card, Row, Col, Button, Form, CardDeck } from 'react-bootstrap';
 import Banner from '../assets/images/Stuck at Home - Searching.png';
 import API from '../utils/API';
+import '../App.css';
 
 function Index(props) {
   // stores whatever was typed in the input element
@@ -63,7 +64,7 @@ function Index(props) {
             <Card className="info-card">
               <Card.Body>
                 <i className="fas fa-search fa-2x m-2 mb-3" />
-                <Card.Title>
+                <Card.Title className="banner-title">
                   {' '}
                   <strong>Step 1</strong>
                 </Card.Title>
@@ -76,7 +77,10 @@ function Index(props) {
             <Card className="info-card">
               <Card.Body>
                 <i className="fas fa-cart-arrow-down fa-2x m-2 mb-3" />
-                <Card.Title>Step 2</Card.Title>
+                <Card.Title className="banner-title">
+                  {' '}
+                  <strong>Step 2</strong>
+                </Card.Title>
                 <Card.Text>
                   Save the product to your Saved Products page Select your
                   product notification preferences.
@@ -86,7 +90,9 @@ function Index(props) {
             <Card className="info-card">
               <Card.Body>
                 <i className="far fa-smile fa-2x m-2 mb-3"></i>
-                <Card.Title>Step 3</Card.Title>
+                <Card.Title>{' '}
+                  <strong>Step 3</strong>
+                </Card.Title>
                 <Card.Text>
                   We will watch the product for you and email you when the
                   desired price or availability change.

@@ -1,7 +1,7 @@
 // requiring nodemailer
 const nodemailer = require('nodemailer');
 
-function sendMail(user, pass, to, item, alertType){
+function sendAvailabilityChangeMail(to, item){
     // transport service to send emails for nodemailer
     const transporter = nodemailer.createTransport({
         // using gmail as transport service
@@ -9,25 +9,18 @@ function sendMail(user, pass, to, item, alertType){
         // auth object specifying email and password of gmail, which...
         // ... allows nodemailer to login and send email using gmail account
         auth: {
-            user: user,
-            pass: pass
+            user: process.env.user,
+            pass: process.env.pass
         }
     });
 
     // email details
-    if(alertType == "price"){
         const mailOptions = {
             from: 'stockify.notifications@gmail.com', // sender address
             to: to, // list of receivers
-            subject: '[Stockify] Alert: Your Product is below your alert price!', // Subject line
-            html: `<p>Your prduct ${item.name} is now ${item.price}!</p>` // plain text body
-    }} else if(alertType == "availability") {
-        const mailOptions = {
-            from: 'stockify.notifications@gmail.com', // sender address
-            to: to, // list of receivers
-            subject: '[Stockify] Alert: Your Product is in Stock!', // Subject line
-            html: `<p>Your prduct ${item.name} is now in stock!</p>` // plain text body
-    }};
+            subject: '[Stockify] Alert: Your saved product availability has changed!', // Subject line
+            html: `<p>Your product ${item.name} is now ${item.status}!</p>` // plain text body
+    }
 
     transporter.sendMail(mailOptions, (err, info) => {
         if(err)
@@ -37,4 +30,4 @@ function sendMail(user, pass, to, item, alertType){
     });
 }
 
-module.exports = {sendMail};
+module.exports = {sendAvailabilityChangeMail};
