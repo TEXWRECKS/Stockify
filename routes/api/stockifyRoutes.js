@@ -27,7 +27,7 @@ router.post("/getItem", async (req, res) => {
 router.post("/saveUserItem", async (req, res) => {
     // reads the url field from the body of the message sent by the front end
     console.log(`[stockifyRoutes] (saveUserItem) : Data recieved from front-end ${JSON.stringify(req.body)}`)
-    saveitem = await saveItem("smrodriguez88@gmail.com", item)
+    saveitem = await saveUserItem("smrodriguez88@gmail.com", item)
     res.status(200).json(true);
 });
 

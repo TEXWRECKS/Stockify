@@ -3,21 +3,23 @@ import '../App.css';
 import API from '../utils/API';
 import { Card, Container, Button, ListGroup } from 'react-bootstrap';
 
-function Product(props) {
+function NewProductCard(props) {
   // Creating a state that holds which question we are asking
   const [counter, setCounter] = useState(0);
 
   // counter===0 question/button set event listener functions
   // Question 1 "Yes" onclick function
-  const question1Yes = (event) => {
+  const question1Yes = async (event) => {
     event.preventDefault()
+    console.log(`Yes Clicked`)
     let item = props.readProductState()
-    console.log()
+    console.log(`Saving Item ${JSON.stringify(item)}`)
     API.saveUserItem(item).then(res =>{
       console.log(res)
+      props.clearProductState();
+      // Needed to delay fetching the users saved items as the fetch would happen before the item could save to the DB
+      setTimeout(() => {props.getUsersSavedItems(); }, 2000)
     }).catch(err => console.log(err))
-    props.clearProductState();
-    props.getUsersSavedItems();
     // changing counter to 1, to present the statement
     setCounter(1);
   };
@@ -29,6 +31,7 @@ function Product(props) {
     // ... if they click this "No" button
     console.log('No has been clicked');
     props.clearProductState();
+    props.getUsersSavedItems();
     // setting the counter to 404 to prompt user to check their url entry and try again, or to return to the product page
     setCounter(404);
   };
@@ -84,4 +87,4 @@ function Product(props) {
   );
 }
 
-export default Product;
+export default NewProductCard;

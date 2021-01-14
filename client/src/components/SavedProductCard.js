@@ -6,7 +6,7 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-function SavedProduct(props) {
+function SavedProductCard(props) {
     // Price Change toggle button variable for setting state
     const [priceChecked, setPriceChecked] = useState({checked: false});
     // Avialability Change toggle button variable for setting state
@@ -91,4 +91,4 @@ function SavedProduct(props) {
   );
 }
 
-export default SavedProduct;
+export default SavedProductCard;

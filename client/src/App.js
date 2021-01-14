@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import Index from './pages/index';
 import Navbar from './components/Navbar';
-import ProductCard from './components/Product';
+import NewProductCard from './components/NewProductCard';
 import SavedProducts from './pages/savedproducts';
 import Spinner from './components/Spinner';
 import API from './utils/API'
@@ -62,12 +62,11 @@ function App() {
   function getUsersSavedItems(){
     API.getUsersSavedItems("smrodriguez88@gmail.com").then(res =>{
       console.log(`User saved item data retrieved ${JSON.stringify(res.data)}`)
-      setSavedProducts({productData: null})
       setSavedProducts({productData: res.data})
     });
   };
 
-  function displaySavedProducts(savedProducts){
+  function displaySavedProducts(){
     if(savedProducts.productData){
       return (<SavedProducts savedProducts={savedProducts}/>)
     } else {
@@ -98,11 +97,17 @@ function App() {
         />
           {isLoading == true && <Spinner />}
           {product.itemTitle && 
-            <ProductCard item={product} updateProductState={updateProductState} clearProductState={clearProductState} readProductState={readProductState} getUsersSavedItems={getUsersSavedItems}/>
+            <NewProductCard 
+              item={product} 
+              updateProductState={updateProductState} 
+              clearProductState={clearProductState} 
+              readProductState={readProductState} 
+              getUsersSavedItems={getUsersSavedItems}
+              />
           }
 
           {user ?
-            displaySavedProducts(savedProducts) :
+            displaySavedProducts() :
             <div className="text-center"><h1>Please LOGIN to Save & View Your Products</h1></div>
           }
           
