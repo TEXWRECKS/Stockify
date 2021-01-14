@@ -5,7 +5,7 @@ import { Button } from 'react-bootstrap';
 const LoginButton = () => {
   const { loginWithPopup } = useAuth0();
 
-  return <button onClick={() => loginWithPopup()}>Log In</button>;
+  return <Button className="btn-loginout" onClick={() => loginWithPopup()}>Log In</Button>;
 };
 
 export default LoginButton;

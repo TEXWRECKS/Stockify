@@ -45,7 +45,7 @@ function SavedProductCard(props) {
               for <strong>below!</strong>
             </Col>
             <Button variant="danger" className="btn-delete">
-              <i class="fa fa-times" aria-hidden="true"></i>
+              <i className="fa fa-times" aria-hidden="true"></i>
             </Button>
           </Row>
 
@@ -71,9 +71,9 @@ function SavedProductCard(props) {
             <Col className="notification-preference md-4">
               <ButtonGroup toggle className="m-2">
                 <ToggleButton
-                  className="p-check btn- btn-secondary active"
+                  className="p-check btn btn-secondary active"
                   type="checkbox"
-                  onClick={Form}
+                  // onClick={}
                   checked={priceChecked.checked}
                   value="1"
                   onChange={(e) =>
