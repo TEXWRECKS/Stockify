@@ -13,7 +13,7 @@ function SavedProductCard(props) {
     const [availabilityChecked, setAvailabilityChecked] = useState({available: false});
 
   return (
-    <Card>
+    <Card className="mb-5">
       <Card.Header>
         <strong style={{ color: 'green' }}>
           {props.savedProduct.itemStatus}
