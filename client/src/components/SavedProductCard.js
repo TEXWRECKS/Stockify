@@ -2,15 +2,16 @@ import React, { useState } from 'react';
 import '../App.css';
 import { Card, Container, Row, Col, Button, Form } from 'react-bootstrap';
 import ToggleButton from 'react-bootstrap/ToggleButton';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function SavedProductCard(props) {
-    // Price Change toggle button variable for setting state
-    const [priceChecked, setPriceChecked] = useState({checked: false});
-    // Avialability Change toggle button variable for setting state
-    const [availabilityChecked, setAvailabilityChecked] = useState({available: false});
+
+  // // // Price Change toggle button variable for setting state
+  const [priceChecked, setPriceChecked] = useState({checked: false});
+  // // // Avialability Change toggle button variable for setting state
+  const [availabilityChecked, setAvailabilityChecked] = useState({available: false});
 
   return (
     <Card className="mb-5">
@@ -69,35 +70,30 @@ function SavedProductCard(props) {
               </Card.Text>
             </Col>
             <Col className="notification-preference md-4">
-              <ButtonGroup toggle className="m-2">
-                <ToggleButton
-                  className="p-check btn btn-secondary active"
-                  type="checkbox"
-                  // onClick={}
-                  checked={priceChecked.checked}
-                  value="1"
-                  onChange={(e) =>
+              <ToggleButtonGroup type="checkbox" defaultValue={[1, 2]} className="mb-2">
+                <ToggleButton 
+                  className="p-check btn" 
+                  type="checkbox" 
+                  checked={priceChecked.checked} 
+                  value={1} 
+                  onChange={(e) => 
                     setPriceChecked({ checked: e.currentTarget.checked })
                   }
-                >
+                  >
                   Price Change
                 </ToggleButton>
-              </ButtonGroup>
-              <ButtonGroup toggle className="m-2">
-                <ToggleButton
-                  className="a-check btn- btn-secondary active"
+                <ToggleButton 
+                  className="a-check btn" 
                   type="checkbox"
                   checked={availabilityChecked.available}
-                  value="1"
-                  onChange={(e) =>
-                    setAvailabilityChecked({
-                      available: e.currentTarget.checked,
-                    })
+                  value={2}
+                  onChanged={(e) =>
+                    setAvailabilityChecked({ available: e.currentTarget.checked })
                   }
-                >
+                  >
                   Availability Change
-                </ToggleButton>
-              </ButtonGroup>
+                  </ToggleButton>
+              </ToggleButtonGroup>
             </Col>
           </Row>
         </Container>
