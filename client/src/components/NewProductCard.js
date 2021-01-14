@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../App.css';
 import API from '../utils/API';
-import { Card, Container, Button, ListGroup } from 'react-bootstrap';
+import { Card, Container, Button } from 'react-bootstrap';
 import { useAuth0 } from '@auth0/auth0-react';
 
 function NewProductCard(props) {

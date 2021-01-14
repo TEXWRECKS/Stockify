@@ -1,4 +1,4 @@
-import React, { useState, useEffect, usePrevious } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import Index from './pages/index';
@@ -10,7 +10,6 @@ import API from './utils/API'
 import { useAuth0 } from '@auth0/auth0-react';
 
 function App() {
-  const [theme, setTheme] = useState('light');
   const [isLoading, setIsLoading] = useState({});
   const [savedProducts, setSavedProducts] = useState({
     productData: null,
@@ -77,7 +76,7 @@ function App() {
   };
 
 
-  useEffect(() => {
+  useEffect((isAuthenticated, getUsersSavedItems) => {
     if (isAuthenticated){
         getUsersSavedItems();
   }}, []);
@@ -98,7 +97,7 @@ function App() {
             />
           )}
         />
-          {isLoading == true && <Spinner />}
+          {isLoading === true && <Spinner />}
           {product.itemTitle && 
             <NewProductCard 
               item={product} 
