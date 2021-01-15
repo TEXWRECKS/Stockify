@@ -1,25 +1,33 @@
 import React, { useState } from 'react';
 import '../App.css';
-import { Card, Container, Row, Col, Button, Form } from 'react-bootstrap';
+import { Card, Container, Row, Col, Button } from 'react-bootstrap';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import API from '../utils/API';
 
 function SavedProductCard(props) {
-  // // // Price Change toggle button variable for setting state
-  const [priceChecked, setPriceChecked] = useState({ checked: false });
-  // // // Avialability Change toggle button variable for setting state
-  const [availabilityChecked, setAvailabilityChecked] = useState({
-    available: false,
-  });
+    // Price Change toggle button variable for setting state
+    const [priceChecked, setPriceChecked] = useState({checked: false});
+    // Avialability Change toggle button variable for setting state
+    const [availabilityChecked, setAvailabilityChecked] = useState({available: false});
+    
+
+    function handleDeleteClick(event) {
+      console.log(event)
+      let item_id = event.target.getAttribute("identify")
+      API.deleteUsersSavedItem(props.user.email, item_id)
+      setTimeout(() => {props.getUsersSavedItems(); }, 2000)
+      }
 
   return (
     <Card className="mb-5">
+    {console.log(props)}
       <Card.Header>
         <strong style={{ color: 'green' }}>
           {props.savedProduct.itemStatus}
         </strong>
-        <Button variant="danger" className="btn-delete">
+        <Button variant="danger" className="btn-delete" identify={props.savedProduct._id} onClick={handleDeleteClick}>
           <i className="fa fa-times" aria-hidden="true"></i>
         </Button>
       </Card.Header>

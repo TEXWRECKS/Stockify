@@ -1,4 +1,4 @@
-import React, { useState, useEffect, usePrevious } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import Index from './pages/index';
@@ -10,7 +10,6 @@ import API from './utils/API';
 import { useAuth0 } from '@auth0/auth0-react';
 
 function App() {
-  const [theme, setTheme] = useState('light');
   const [isLoading, setIsLoading] = useState({});
   const [savedProducts, setSavedProducts] = useState({
     productData: null,
@@ -72,9 +71,9 @@ function App() {
     }
   }
 
-  function displaySavedProducts() {
-    if (savedProducts.productData) {
-      return <SavedProducts savedProducts={savedProducts} />;
+  function displaySavedProducts(){
+    if(savedProducts.productData){
+      return (<SavedProducts savedProducts={savedProducts} getUsersSavedItems={getUsersSavedItems} user={user}/>)
     } else {
       return (
         <div className="text-center mb-5">
@@ -84,11 +83,10 @@ function App() {
     }
   }
 
-  useEffect(() => {
-    if (isAuthenticated) {
-      getUsersSavedItems();
-    }
-  }, []);
+  useEffect((isAuthenticated, getUsersSavedItems) => {
+    if (isAuthenticated){
+        getUsersSavedItems();
+  }}, []);
 
   return (
     <Router>
@@ -106,16 +104,16 @@ function App() {
             />
           )}
         />
-        {isLoading == true && <Spinner />}
-        {product.itemTitle && (
-          <NewProductCard
-            item={product}
-            updateProductState={updateProductState}
-            clearProductState={clearProductState}
-            readProductState={readProductState}
-            getUsersSavedItems={getUsersSavedItems}
-          />
-        )}
+          {isLoading === true && <Spinner />}
+          {product.itemTitle && 
+            <NewProductCard 
+              item={product} 
+              updateProductState={updateProductState} 
+              clearProductState={clearProductState} 
+              readProductState={readProductState} 
+              getUsersSavedItems={getUsersSavedItems}
+              />
+          }
 
         {isAuthenticated ? (
           displaySavedProducts()

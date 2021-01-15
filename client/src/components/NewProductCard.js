@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../App.css';
 import API from '../utils/API';
-import { Card, Container, Button, ListGroup } from 'react-bootstrap';
+import { Card, Container, Button } from 'react-bootstrap';
 import { useAuth0 } from '@auth0/auth0-react';
 
 function NewProductCard(props) {
@@ -17,7 +17,7 @@ function NewProductCard(props) {
       console.log(res)
       props.clearProductState();
       // Needed to delay fetching the users saved items as the fetch would happen before the item could save to the DB
-      setTimeout(() => {props.getUsersSavedItems(); }, 2000)
+      setTimeout(() => {props.getUsersSavedItems(); }, 1000)
     }).catch(err => console.log(err))
   };
 
